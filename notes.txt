@@ -1,0 +1,11 @@
+http://api.wunderground.com/api/b784db15a2dd421b/conditions/q/NJ/Collingswood.json
+
+Current Task:
+* Setup Flask server for app
+
+To do:
+* parse JSON for temperate data
+* hook up thermometer to RPi
+* write POC pyton script to get temperate from thermometer
+* store on github (hide API key!)
+* Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
