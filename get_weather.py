@@ -3,7 +3,7 @@
 import urllib2
 import json
 
-if __name__ == '__main__':
+def get_temperature():
     api_key = None
     with open('api_key.txt') as file:
         api_key = file.read()
@@ -14,4 +14,7 @@ if __name__ == '__main__':
     weather_data = json.loads(response.read())
     temperature = weather_data['current_observation']['temp_f']
 
-    print(temperature)
+    return temperature
+
+if __name__ == '__main__':
+    print(get_temperature())
