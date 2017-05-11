@@ -7,6 +7,8 @@ Example:
 Current Task:
 * Generate new API key
 * Cache the weather results with a timestamp to limit number of API calls
+	* Display the time it was last updated
+	* Add an option to force refresh?
 
 To do:
 * hook up thermometer to RPi
