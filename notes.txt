@@ -3,6 +3,7 @@ Docs
 	https://www.wunderground.com/weather/api/d/docs?MR=1
 Example:
 	http://api.wunderground.com/api/<API KEY>/conditions/q/NJ/Collingswood.json
+    http://api.wunderground.com/api/<API KEY>/forecast/q/NJ/Collingswood.json
 
 Current Task:
 * Generate new API key
