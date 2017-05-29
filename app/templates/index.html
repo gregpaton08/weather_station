@@ -10,13 +10,32 @@
         <p>{{ outside_temperature }}&deg;</p>
     </div>
     <table>
-        {% for hour in hourly %}
         <tr>
-            <td>{{ hour.FCTTIME.hour }}</td>
-            <td>{{ hour.temp.english }}&deg;</td>
-            <td>{{ hour.condition }}</td>
-        </tr>
+        {% for hour in hourly %}
+            <td>
+                {% if hour.FCTTIME.hour|int > 12 %}
+                    {{ hour.FCTTIME.hour|int - 12 }} pm
+                {% else %}
+                    {{ hour.FCTTIME.hour }} am
+                {% endif %}
+            </td>
         {% endfor %}
+        </tr>
+        <tr>
+        {% for hour in hourly %}
+            <td>{{ hour.temp.english }}&deg;</td>
+        {% endfor %}
+        </tr>
+        <tr>
+        {% for hour in hourly %}
+            <td>{{ hour.condition }}</td>
+        {% endfor %}
+        </tr>
+<!--         {% for hour in hourly %}
+        <td>{{ hour.FCTTIME.hour }}</td><
+        <tr><td>{{ hour.temp.english }}&deg;</td></tr>
+        <tr><td>{{ hour.condition }}</td></tr>
+        {% endfor %} -->
     </table>
 </body>
 </html>
