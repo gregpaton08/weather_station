@@ -20,13 +20,13 @@ def get_temperature():
     return temperature
 
 
-def get_hourly_forecast():
+def get_hourly_forecast(num_hours=-1):
     url = 'http://api.wunderground.com/api/' + get_api_key() + '/hourly/q/NJ/Collingswood.json'
 
     response = urllib2.urlopen(url)
     weather_data = json.loads(response.read())
 
-    return weather_data['hourly_forecast']
+    return weather_data['hourly_forecast'][:num_hours]
 
 
 if __name__ == '__main__':
