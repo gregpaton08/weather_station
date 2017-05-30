@@ -11,7 +11,8 @@ def get_api_key():
 
 
 def get_temperature():
-    url = 'http://api.wunderground.com/api/' + get_api_key() + '/conditions/q/NJ/Collingswood.json'
+    url_path = '/conditions/q/NJ/Collingswood.json'
+    url = 'http://api.wunderground.com/api/' + get_api_key() + url_path
 
     response = urllib2.urlopen(url)
     weather_data = json.loads(response.read())
@@ -21,7 +22,8 @@ def get_temperature():
 
 
 def get_hourly_forecast(num_hours=-1):
-    url = 'http://api.wunderground.com/api/' + get_api_key() + '/hourly/q/NJ/Collingswood.json'
+    url_path = '/hourly/q/NJ/Collingswood.json'
+    url = 'http://api.wunderground.com/api/' + get_api_key() + url_path
 
     response = urllib2.urlopen(url)
     weather_data = json.loads(response.read())
