@@ -9,17 +9,26 @@
 
 .forecast {
     margin-left:100px;
-    width: 90%;
     padding: 10px;
     font-family: arial;
     text-align: center;
 }
 
 .forecast table {
+    table-layout: fixed;
+    width: 800px;
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
 }
 
 .forecast td {
     text-align: center;
+}
+
+.forecast .time {
+    line-height: 2;
+}
+
+.forecast .temperature {
+    line-height: 2;
 }

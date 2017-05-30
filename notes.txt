@@ -12,7 +12,6 @@ Current Task:
 	* Add an option to force refresh?
 
 To do:
-* hook up thermometer to RPi
 * write POC pyton script to get temperate from thermometer
 * store on github (hide API key!)
 * Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
@@ -26,3 +25,4 @@ To do:
 Done:
 * Setup Flask server for app
 * parse JSON for temperature data
+* hook up thermometer to RPi
