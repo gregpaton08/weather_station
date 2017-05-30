@@ -1,8 +1,20 @@
 .center {
-    margin: auto;
-    width: 30%;
+    margin-left: 325px;
+    width: 400px;
     padding: 10px;
     background-color: #CCC;
     font-family: arial;
+    text-align: center;
+}
+
+.forecast {
+    margin-left:100px;
+    width: 90%;
+    padding: 10px;
+    font-family: arial;
+    text-align: center;
+}
+
+.forecast td {
     text-align: center;
 }

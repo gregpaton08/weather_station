@@ -9,28 +9,32 @@
         <p>{{ inside_temperature }}&deg;</p>
         <p>{{ outside_temperature }}&deg;</p>
     </div>
-    <table>
-        <tr>
-        {% for hour in hourly %}
-            <td>
-                {% if hour.FCTTIME.hour|int > 12 %}
-                    {{ hour.FCTTIME.hour|int - 12 }} pm
-                {% else %}
-                    {{ hour.FCTTIME.hour }} am
-                {% endif %}
-            </td>
-        {% endfor %}
-        </tr>
-        <tr>
-        {% for hour in hourly %}
-            <td>{{ hour.temp.english }}&deg;</td>
-        {% endfor %}
-        </tr>
-        <tr>
-        {% for hour in hourly %}
-            <td>{{ hour.condition }}</td>
-        {% endfor %}
-        </tr>
+    <div class="forecast">
+        <table>
+            <tr>
+            {% for hour in hourly %}
+                <td>
+                    {% if hour.FCTTIME.hour|int == 0 %}
+                        12 am
+                    {% elif hour.FCTTIME.hour|int > 12 %}
+                        {{ hour.FCTTIME.hour|int - 12 }} pm
+                    {% else %}
+                        {{ hour.FCTTIME.hour }} am
+                    {% endif %}
+                </td>
+            {% endfor %}
+            </tr>
+            <tr>
+            {% for hour in hourly %}
+                <td>{{ hour.temp.english }}&deg;</td>
+            {% endfor %}
+            </tr>
+            <tr>
+            {% for hour in hourly %}
+                <td>{{ hour.condition }}</td>
+            {% endfor %}
+            </tr>
     </table>
+    </div>
 </body>
 </html>
