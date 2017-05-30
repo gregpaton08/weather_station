@@ -25,10 +25,12 @@ def save_cache_data(key, data):
     pickle.dump(cache_data, open(api_cache_file, 'wb'))
 
 
-def get_cache_data(key):
+def get_cache_data(key, within_last_num_seconds=60):
     cache_data = __load_cache_data()
     if not cache_data.get(key, None):
         return None
     time = cache_data[key].get('time', None)
-    print("{0} second".format((datetime.datetime.now() - time).seconds))
-    return cache_data[key].get('data', {})
+    time_diff = (datetime.datetime.now() - time).seconds
+    if time_diff > within_last_num_seconds:
+        return None
+    return cache_data[key].get('data', None)
