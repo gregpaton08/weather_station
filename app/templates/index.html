@@ -21,17 +21,11 @@
                     {% else %}
                         {{ hour.FCTTIME.hour }} am
                     {% endif %}
+                    <br/>
+                    {{ hour.temp.english }}&deg;
+                    <br/>
+                    {{ hour.condition }}
                 </td>
-            {% endfor %}
-            </tr>
-            <tr>
-            {% for hour in hourly %}
-                <td>{{ hour.temp.english }}&deg;</td>
-            {% endfor %}
-            </tr>
-            <tr>
-            {% for hour in hourly %}
-                <td>{{ hour.condition }}</td>
             {% endfor %}
             </tr>
     </table>
