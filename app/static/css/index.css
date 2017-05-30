@@ -15,6 +15,11 @@
     text-align: center;
 }
 
+.forecast table {
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+}
+
 .forecast td {
     text-align: center;
 }
