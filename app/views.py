@@ -10,6 +10,6 @@ def index():
     hourly_forecast = get_weather.get_hourly_forecast(12)
     print(len(hourly_forecast))
     return render_template('index.html',
-                           inside_temperature=round(thermometer.read_temp_f(), 1),
-                           outside_temperature=get_weather.get_temperature(),
+                           inside_temperature=round(thermometer.read_temp_f(), 0),
+                           outside_temperature=round(get_weather.get_temperature(), 0),
                            hourly=hourly_forecast)
