@@ -25,19 +25,23 @@ def __get_data_for_url_path(url_path):
     return data
 
 
-def get_temperature():
+def __get_current_observation_for_key(key):
     url_path = '/conditions/q/NJ/Collingswood.json'
     weather_data = __get_data_for_url_path(url_path)
-    return weather_data['current_observation']['temp_f']
+    return weather_data['current_observation'][key]
+
+
+def get_temperature():
+    return __get_current_observation_for_key('temp_f')
+
+
+def get_condition():
+    return __get_current_observation_for_key('weather')
 
 
 def get_hourly_forecast(num_hours=-1):
     url_path = '/hourly/q/NJ/Collingswood.json'
-    url = 'http://api.wunderground.com/api/' + get_api_key() + url_path
-
-    response = urllib2.urlopen(url)
-    weather_data = json.loads(response.read())
-
+    weather_data = __get_data_for_url_path(url_path)
     return weather_data['hourly_forecast'][:num_hours]
 
 
