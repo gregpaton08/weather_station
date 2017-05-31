@@ -1,0 +1,94 @@
+
+{
+  "response": {
+  "version":"0.1",
+  "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "conditions": 1
+  }
+    }
+  , "current_observation": {
+        "image": {
+        "url":"http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+        "title":"Weather Underground",
+        "link":"http://www.wunderground.com"
+        },
+        "display_location": {
+        "full":"Collingswood, NJ",
+        "city":"Collingswood",
+        "state":"NJ",
+        "state_name":"New Jersey",
+        "country":"US",
+        "country_iso3166":"US",
+        "zip":"08108",
+        "magic":"1",
+        "wmo":"99999",
+        "latitude":"39.91999817",
+        "longitude":"-75.06999969",
+        "elevation":"9.4"
+        },
+        "observation_location": {
+        "full":"King Ave/Center St., Collingswood, New Jersey",
+        "city":"King Ave/Center St., Collingswood",
+        "state":"New Jersey",
+        "country":"US",
+        "country_iso3166":"US",
+        "latitude":"39.923061",
+        "longitude":"-75.066170",
+        "elevation":"50 ft"
+        },
+        "estimated": {
+        },
+        "station_id":"KNJCOLLI4",
+        "observation_time":"Last Updated on May 30, 8:50 PM EDT",
+        "observation_time_rfc822":"Tue, 30 May 2017 20:50:10 -0400",
+        "observation_epoch":"1496191810",
+        "local_time_rfc822":"Tue, 30 May 2017 20:50:19 -0400",
+        "local_epoch":"1496191819",
+        "local_tz_short":"EDT",
+        "local_tz_long":"America/New_York",
+        "local_tz_offset":"-0400",
+        "weather":"Fog",
+        "temperature_string":"60.1 F (15.6 C)",
+        "temp_f":60.1,
+        "temp_c":15.6,
+        "relative_humidity":"99%",
+        "wind_string":"Calm",
+        "wind_dir":"SE",
+        "wind_degrees":135,
+        "wind_mph":0.0,
+        "wind_gust_mph":0,
+        "wind_kph":0,
+        "wind_gust_kph":0,
+        "pressure_mb":"1019",
+        "pressure_in":"30.09",
+        "pressure_trend":"0",
+        "dewpoint_string":"60 F (15 C)",
+        "dewpoint_f":60,
+        "dewpoint_c":15,
+        "heat_index_string":"NA",
+        "heat_index_f":"NA",
+        "heat_index_c":"NA",
+        "windchill_string":"NA",
+        "windchill_f":"NA",
+        "windchill_c":"NA",
+        "feelslike_string":"60.1 F (15.6 C)",
+        "feelslike_f":"60.1",
+        "feelslike_c":"15.6",
+        "visibility_mi":"3.0",
+        "visibility_km":"4.8",
+        "solarradiation":"--",
+        "UV":"0","precip_1hr_string":"-999.00 in ( 0 mm)",
+        "precip_1hr_in":"-999.00",
+        "precip_1hr_metric":" 0",
+        "precip_today_string":"0.14 in (4 mm)",
+        "precip_today_in":"0.14",
+        "precip_today_metric":"4",
+        "icon":"fog",
+        "icon_url":"http://icons.wxug.com/i/c/k/nt_fog.gif",
+        "forecast_url":"http://www.wunderground.com/US/NJ/Collingswood.html",
+        "history_url":"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KNJCOLLI4",
+        "ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=39.923061,-75.066170",
+        "nowcast":""
+    }
+}
