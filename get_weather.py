@@ -28,9 +28,7 @@ def __get_data_for_url_path(url_path):
 def get_temperature():
     url_path = '/conditions/q/NJ/Collingswood.json'
     weather_data = __get_data_for_url_path(url_path)
-    temperature = weather_data['current_observation']['temp_f']
-
-    return temperature
+    return weather_data['current_observation']['temp_f']
 
 
 def get_hourly_forecast(num_hours=-1):
