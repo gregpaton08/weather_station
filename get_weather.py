@@ -11,8 +11,7 @@ def get_api_key():
     return ''
 
 
-def get_temperature():
-    url_path = '/conditions/q/NJ/Collingswood.json'
+def __get_data_for_url_path(url_path):
     cache_data = apicache.get_cache_data(url_path)
     if cache_data:
         return cache_data
@@ -20,10 +19,16 @@ def get_temperature():
     url = 'http://api.wunderground.com/api/' + get_api_key() + url_path
 
     response = urllib2.urlopen(url)
-    weather_data = json.loads(response.read())
-    temperature = weather_data['current_observation']['temp_f']
+    data = json.loads(response.read())
+    apicache.save_cache_data(url_path, data)
 
-    apicache.save_cache_data(url_path, temperature)
+    return data
+
+
+def get_temperature():
+    url_path = '/conditions/q/NJ/Collingswood.json'
+    weather_data = __get_data_for_url_path(url_path)
+    temperature = weather_data['current_observation']['temp_f']
 
     return temperature
 
