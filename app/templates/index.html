@@ -7,7 +7,13 @@
 <body>
     <div class="center">
         <p>Inside {{ inside_temperature|int }}&deg;</p>
-        <p>Outside {{ outside_temperature|int }}&deg; and {{ condition }}</p>
+        <p>Outside {{ outside_temperature|int }}&deg;
+        {% if condition == "overcast" %}
+        <img src="/static/overcast.png" height="64" width="64">
+        {% else %}
+        <img src="/static/fog.png" height="64" width="64">
+        {% endif %}
+        </p>
     </div>
     <div class="forecast">
         <table>

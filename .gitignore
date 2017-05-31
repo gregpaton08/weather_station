@@ -2,3 +2,5 @@ api_key.txt
 *.pyc
 flask
 *.p
+.DS_Store
+._*
