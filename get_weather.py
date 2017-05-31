@@ -13,7 +13,7 @@ def get_api_key():
 
 def __get_data_for_url_path(url_path):
     cache_data = apicache.get_cache_data(url_path)
-    if cache_data:
+    if cache_data is not None:
         return cache_data
 
     url = 'http://api.wunderground.com/api/' + get_api_key() + url_path
