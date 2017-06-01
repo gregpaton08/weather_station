@@ -28,7 +28,7 @@ def __get_data_for_url_path(url_path):
 def __get_current_observation_for_key(key):
     url_path = '/conditions/q/NJ/Collingswood.json'
     weather_data = __get_data_for_url_path(url_path)
-    return weather_data['current_observation'][key]
+    return weather_data.get('current_observation', {}).get(key, None)
 
 
 def get_temperature():
@@ -42,7 +42,7 @@ def get_condition():
 def get_hourly_forecast(num_hours=-1):
     url_path = '/hourly/q/NJ/Collingswood.json'
     weather_data = __get_data_for_url_path(url_path)
-    return weather_data['hourly_forecast'][:num_hours]
+    return weather_data.get('hourly_forecast', [])[:num_hours]
 
 
 def __get_astronomy_data():

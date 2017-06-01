@@ -21,7 +21,7 @@
         });
     </script>
     <div class="center">
-        <p>Inside <span id="insidetemp">.</span>&deg;</p>
+        <p>Inside <span id="insidetemp">{{ inside_temperature|int }}</span>&deg;</p>
         <p>Outside <span id="outsidetemp">{{ outside_temperature|int }}</span>&deg;
         {% if condition == "overcast" %}
         <img src="/static/overcast.png" height="64" width="64">
