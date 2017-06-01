@@ -14,13 +14,12 @@ Current Task:
 	* Add an option to force refresh?
 
 To do:
-* store on github (hide API key!)
+* List out the day (hour by hour) forecast
+* List out the week (day by day) forecast
 * Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
 * Design the interface
 	* House graphic containing indoor temp
 	* Sun (or clouds or current weather) alongside outdoor temp
-* List out the days (hour by hour) forecast
-* List out the week (day by day) forecast
 
 
 Done:
@@ -28,3 +27,4 @@ Done:
 * parse JSON for temperature data
 * hook up thermometer to RPi
 * write POC pyton script to get temperature from thermometer
+* store on github (hide API key!)
