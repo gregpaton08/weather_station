@@ -17,9 +17,9 @@ def index():
 
 @app.route('/get_inside_temperature')
 def get_inside_temperature():
-    return jsonify(round(thermometer.read_temp_f(), 0))
+    return jsonify(temperature=round(thermometer.read_temp_f(), 0))
 
 
 @app.route('/get_outside_temperature')
 def get_outside_temperature():
-    return jsonify(round(get_weather.get_temperature(), 0))
+    return jsonify(temperature=round(get_weather.get_temperature(), 0))
