@@ -27,6 +27,8 @@
         <img src="/static/overcast.png" height="64" width="64">
         {% elif condition == "fog" %}
         <img src="/static/fog.png" height="64" width="64">
+        {% elif condition == "clear" %}
+        <img src="/static/moon.png" height="64" width="64">
         {% else %}
         and {{ condition }}
         {% endif %}
@@ -42,6 +44,8 @@
                             12 am
                         {% elif hour.FCTTIME.hour|int > 12 %}
                             {{ hour.FCTTIME.hour|int - 12 }} pm
+                        {% elif hour.FCTTIME.hour|int == 12 %}
+                            {{ hour.FCTTIME.hour|int }} pm
                         {% else %}
                             {{ hour.FCTTIME.hour }} am
                         {% endif %}
