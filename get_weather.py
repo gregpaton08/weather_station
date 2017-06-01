@@ -45,6 +45,16 @@ def get_hourly_forecast(num_hours=-1):
     return weather_data['hourly_forecast'][:num_hours]
 
 
+def __get_astronomy_data():
+    url_path = '/astronomy/q/NJ/Collingswood.json'
+    return __get_data_for_url_path(url_path)
+
+
+def get_sunset():
+    data = __get_astronomy_data();
+    return data['sun_phase']['sunrise']
+
+
 if __name__ == '__main__':
     print(get_temperature())
 
