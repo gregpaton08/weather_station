@@ -4,6 +4,8 @@ Docs
 Example:
 	http://api.wunderground.com/api/<API KEY>/conditions/q/NJ/Collingswood.json
     http://api.wunderground.com/api/<API KEY>/forecast/q/NJ/Collingswood.json
+    # for sunrise/sunset
+    http://api.wunderground.com/api/<API KEY>/astronomy/q/NJ/Collingswood.json
 
 Current Task:
 * Generate new API key
