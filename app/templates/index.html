@@ -8,10 +8,13 @@
     <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
     <script type=text/javascript>
         $(function() {
-            $SCRIPT_ROOT = ''
-            $.getJSON($SCRIPT_ROOT + '/get_inside_temperature', {}, function(data) {
-                $("#result").text(data.temperature);
-            });
+            setInterval(function() {
+                $SCRIPT_ROOT = ''
+                $.getJSON($SCRIPT_ROOT + '/get_inside_temperature', {}, function(data) {
+                    $("#result").text(data.temperature);
+                });
+            },
+            60000);
         });
     </script>
     <div class="center">
