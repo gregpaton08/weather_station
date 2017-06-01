@@ -11,19 +11,24 @@
             setInterval(function() {
                 $SCRIPT_ROOT = ''
                 $.getJSON($SCRIPT_ROOT + '/get_inside_temperature', {}, function(data) {
-                    $("#result").text(data.temperature);
+                    $("#insidetemp").text(data.temperature);
+                });
+                $.getJSON($SCRIPT_ROOT + '/get_outside_temperature', {}, function(data) {
+                    $("#outsidetemp").text(data.temperature);
                 });
             },
             60000);
         });
     </script>
     <div class="center">
-        <p>Inside {{ inside_temperature|int }}&deg;</p>
-        <p>Outside {{ outside_temperature|int }}&deg;
+        <p>Inside <span id="insidetemp">{{ inside_temperature|int }}</span>&deg;</p>
+        <p>Outside <span id="outsidetemp">{{ outside_temperature|int }}</span>&deg;
         {% if condition == "overcast" %}
         <img src="/static/overcast.png" height="64" width="64">
-        {% else %}
+        {% elif condition == "fog" %}
         <img src="/static/fog.png" height="64" width="64">
+        {% else %}
+        and {{ condition }}
         {% endif %}
         </p>
     </div>
@@ -52,6 +57,5 @@
             </tr>
     </table>
     </div>
-    <span id=result>?</span>
 </body>
 </html>
