@@ -25,6 +25,11 @@ def get_outside_temperature():
     return jsonify(temperature=round(get_weather.get_temperature(), 0))
 
 
+@app.route('/get_sunrise')
+def get_sunrise():
+    return jsonify(sunrise=get_weather.get_sunrise())
+
+
 @app.route('/get_sunset')
 def get_sunset():
     return jsonify(sunrise=get_weather.get_sunset())

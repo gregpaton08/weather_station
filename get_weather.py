@@ -50,9 +50,14 @@ def __get_astronomy_data():
     return __get_data_for_url_path(url_path)
 
 
-def get_sunset():
+def get_sunrise():
     data = __get_astronomy_data();
     return data['sun_phase']['sunrise']
+
+
+def get_sunset():
+    data = __get_astronomy_data();
+    return data['sun_phase']['sunset']
 
 
 if __name__ == '__main__':
