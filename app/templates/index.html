@@ -21,18 +21,23 @@
         });
     </script>
     <div class="center">
-        <p>Inside <span id="insidetemp">{{ inside_temperature|int }}</span>&deg;</p>
-        <p>Outside <span id="outsidetemp">{{ outside_temperature|int }}</span>&deg;
-        {% if condition == "overcast" %}
-        <img src="/static/overcast.png" height="64" width="64">
-        {% elif condition == "fog" %}
-        <img src="/static/fog.png" height="64" width="64">
-        {% elif condition == "clear" %}
-        <img src="/static/moon.png" height="64" width="64">
-        {% else %}
-        and {{ condition }}
-        {% endif %}
-        </p>
+        <span class="intemp">
+            <!-- <img src="static/home.png" height="50" width="50"> -->
+            <span id="insidetemp">{{ inside_temperature|int }}</span>&deg;
+        </span>
+        <span class="outtemp">
+            <span id="outsidetemp">{{ outside_temperature|int }}</span>&deg;
+<!--             {% if condition == "overcast" %}
+            <img src="/static/overcast.png" height="64" width="64">
+            {% elif condition == "fog" %}
+            <img src="/static/fog.png" height="64" width="64">
+            {% elif condition == "clear" %}
+            <img src="/static/moon.png" height="64" width="64">
+            {% else %}
+            and {{ condition }}
+            {% endif %} -->
+        </span>
+        <br/>
     </div>
     <div class="forecast">
         <table>

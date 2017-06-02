@@ -8,7 +8,6 @@ Example:
     http://api.wunderground.com/api/<API KEY>/astronomy/q/NJ/Collingswood.json
 
 Current Task:
-* Generate new API key
 * Cache the weather results with a timestamp to limit number of API calls
 	* Display the time it was last updated
 	* Add an option to force refresh?
@@ -19,6 +18,7 @@ To do:
 * Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
 * Design the interface
 	* House graphic containing indoor temp
+    # Design graphics in Sketch
 	* Sun (or clouds or current weather) alongside outdoor temp
 
 
@@ -28,3 +28,4 @@ Done:
 * hook up thermometer to RPi
 * write POC pyton script to get temperature from thermometer
 * store on github (hide API key!)
+* Generate new API key
