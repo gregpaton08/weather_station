@@ -7,7 +7,7 @@ import apicache
 
 def get_api_key():
     with open('api_key.txt') as file:
-        return file.read()
+        return file.read().strip()
     return ''
 
 
