@@ -25,7 +25,8 @@ To do:
     * Access database in flask app http://flask.pocoo.org/docs/0.12/tutorial/schema/
 * Graph inside temp
 * Graph forecast for outside
-* Add option to choose celsius or fahrenheit
+* Consolidate AJAX data request into a single request (instead of separate requests for indoor/outdoor temperature)
+* Update C/F link in callback so that it is in sync with the data displayed
 
 
 Done:
@@ -35,3 +36,4 @@ Done:
 * write POC pyton script to get temperature from thermometer
 * store on github (hide API key!)
 * Generate new API key
+* Add option to choose celsius or fahrenheit
