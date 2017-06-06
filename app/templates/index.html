@@ -21,6 +21,10 @@
                 temperatureUrls['#outsidetemp'] = '/get_outside_temperature_c';
             }
 
+            function convertCelsiusToFahrenheit(celsius) {
+                return ((celsius * 9.0) / 5.0) + 32.0;
+            }
+
             function updateTemperatureData(selector, urlPath) {
                 $.getJSON($SCRIPT_ROOT + urlPath, {}, function(data) {
                     $(selector).text(data.temperature);
