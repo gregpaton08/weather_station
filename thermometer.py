@@ -28,10 +28,10 @@ def read_temp_c():
 
 
 def read_temp_f():
-    return convert_celsius_to_fahrenheit(read_temp_c())
+    return __convert_celsius_to_fahrenheit(read_temp_c())
 
 
-def convert_celsius_to_fahrenheit(celsius):
+def __convert_celsius_to_fahrenheit(celsius):
     return celsius * 9.0 / 5.0 + 32.0
 
 
