@@ -9,29 +9,29 @@
     color: #888;
 }
 
-.forecast {
+#hourly_forecast {
     margin-left:100px;
     padding: 10px;
     font-family: arial;
     text-align: center;
 }
 
-.forecast table {
+#hourly_forecast table {
     table-layout: fixed;
     width: 800px;
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
 }
 
-.forecast td {
+#hourly_forecast td {
     text-align: center;
 }
 
-.forecast .time {
+#hourly_forecast .time {
     line-height: 2;
 }
 
-.forecast .temperature {
+#hourly_forecast .temperature {
     line-height: 2;
 }
 

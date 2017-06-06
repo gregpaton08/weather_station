@@ -33,3 +33,8 @@ def get_sunrise():
 @app.route('/get_sunset')
 def get_sunset():
     return jsonify(sunrise=get_weather.get_sunset())
+
+
+@app.route('/get_hourly_forecast')
+def get_hourly_forecast():
+    return jsonify(forecast=get_weather.get_hourly_forecast())
