@@ -11,12 +11,22 @@
 
         function updateData() {
             $SCRIPT_ROOT = ''
-            $.getJSON($SCRIPT_ROOT + '/get_inside_temperature', {}, function(data) {
-                $("#insidetemp").text(data.temperature);
-            });
-            $.getJSON($SCRIPT_ROOT + '/get_outside_temperature', {}, function(data) {
-                $("#outsidetemp").text(data.temperature);
-            });
+
+            var temperatureUrls = {};
+            if (tempInFahrenheit) {
+                temperatureUrls['#insidetemp'] = '/get_inside_temperature';
+                temperatureUrls['#outsidetemp'] = '/get_outside_temperature';
+            } else {
+                temperatureUrls['#insidetemp'] = '/get_inside_temperature';
+                temperatureUrls['#outsidetemp'] = '/get_outside_temperature';
+            }
+
+            for (key in temperatureUrls) {
+                $.getJSON($SCRIPT_ROOT + temperatureUrls[key], {}, function(data) {
+                    $(key).text(data.temperature);
+                });
+            }
+
             // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
             //     $html = ''
             //     $.each(data.forecast, function(index, value) {
