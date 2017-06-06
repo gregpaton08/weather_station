@@ -8,6 +8,12 @@
     <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
     <script type=text/javascript>
         var displayTemperatureInFahrenheit = true;
+        var insideTemperatureC = 0;
+        var outsideTemperatureC = 0;
+
+        function updateTemperature() {
+
+        }
 
         function updateData() {
             $SCRIPT_ROOT = ''
