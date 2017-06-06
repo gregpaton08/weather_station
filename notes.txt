@@ -10,7 +10,7 @@ Example:
 Current Task:
 * Cache the weather results with a timestamp to limit number of API calls
 	* Display the time it was last updated
-	* Add an option to force refresh?
+	* Add an option to force refresh? <-- NO
 
 To do:
 * Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
