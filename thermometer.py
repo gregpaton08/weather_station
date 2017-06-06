@@ -14,10 +14,10 @@ def __read_sensor():
     return lines
 
 
-def read_temp():
+def read_temp_c():
     if not os.path.isfile(temp_sensor):
         return -200.0
-    
+
     data = __read_sensor()
     while 'YES' not in data[0]:
         time.sleep(0.2)
@@ -28,7 +28,7 @@ def read_temp():
 
 
 def read_temp_f():
-    return convert_celsius_to_fahrenheit(read_temp())
+    return convert_celsius_to_fahrenheit(read_temp_c())
 
 
 def convert_celsius_to_fahrenheit(celsius):

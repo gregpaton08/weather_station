@@ -14,18 +14,23 @@
 
             var temperatureUrls = {};
             if (tempInFahrenheit) {
-                temperatureUrls['#insidetemp'] = '/get_inside_temperature';
-                temperatureUrls['#outsidetemp'] = '/get_outside_temperature';
+                temperatureUrls['#insidetemp'] = '/get_inside_temperature_f';
+                temperatureUrls['#outsidetemp'] = '/get_outside_temperature_f';
             } else {
-                temperatureUrls['#insidetemp'] = '/get_inside_temperature';
-                temperatureUrls['#outsidetemp'] = '/get_outside_temperature';
+                temperatureUrls['#insidetemp'] = '/get_inside_temperature_c';
+                temperatureUrls['#outsidetemp'] = '/get_outside_temperature_c';
+            }
+
+            function updateTemperatureData(selector, urlPath) {
+                $.getJSON($SCRIPT_ROOT + urlPath, {}, function(data) {
+                    $(selector).text(data.temperature);
+                });
             }
 
             for (key in temperatureUrls) {
-                $.getJSON($SCRIPT_ROOT + temperatureUrls[key], {}, function(data) {
-                    $(key).text(data.temperature);
-                });
+                updateTemperatureData(key, temperatureUrls[key]);
             }
+
 
             // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
             //     $html = ''
@@ -40,19 +45,19 @@
             // });
         }
         $(function() {
-            setInterval(updateData, 5000);
+            setInterval(updateData, 30000);
         });
 
         $(function() {    
             $("#temp_type").click(function(e) {
                 e.preventDefault();
-                console.log('temp type clicked')
                 tempInFahrenheit = !tempInFahrenheit;
                 if (tempInFahrenheit) {
                     $("#temp_type").html('<a href="#">c&deg;</a>|f&deg;');
                 } else {
                     $("#temp_type").html('c&deg;|<a href="#">f&deg;</a>');
                 }
+                updateData();
             });
         });
 

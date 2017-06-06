@@ -10,19 +10,29 @@ def index():
     hourly_forecast = get_weather.get_hourly_forecast(12)
     return render_template('index.html',
                            inside_temperature=round(thermometer.read_temp_f(), 0),
-                           outside_temperature=round(get_weather.get_temperature(), 0),
+                           outside_temperature=round(get_weather.get_temperature_f(), 0),
                            condition=get_weather.get_condition().lower(),
                            hourly=hourly_forecast)
 
 
-@app.route('/get_inside_temperature')
-def get_inside_temperature():
+@app.route('/get_inside_temperature_f')
+def get_inside_temperature_f():
     return jsonify(temperature=round(thermometer.read_temp_f(), 0))
 
 
-@app.route('/get_outside_temperature')
-def get_outside_temperature():
-    return jsonify(temperature=round(get_weather.get_temperature(), 0))
+@app.route('/get_outside_temperature_f')
+def get_outside_temperature_f():
+    return jsonify(temperature=round(get_weather.get_temperature_f(), 0))
+
+
+@app.route('/get_inside_temperature_c')
+def get_inside_temperature_c():
+    return jsonify(temperature=round(thermometer.read_temp_c(), 0))
+
+
+@app.route('/get_outside_temperature_c')
+def get_outside_temperature_c():
+    return jsonify(temperature=round(get_weather.get_temperature_c(), 0))
 
 
 @app.route('/get_sunrise')

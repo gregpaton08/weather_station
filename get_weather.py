@@ -31,8 +31,12 @@ def __get_current_observation_for_key(key):
     return weather_data.get('current_observation', {}).get(key, None)
 
 
-def get_temperature():
+def get_temperature_f():
     return __get_current_observation_for_key('temp_f')
+
+
+def get_temperature_c():
+    return __get_current_observation_for_key('temp_c')
 
 
 def get_condition():
