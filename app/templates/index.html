@@ -7,7 +7,7 @@
 <body>
     <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
     <script type=text/javascript>
-        var tempInFahrenheit = true;
+        var displayTemperatureInFahrenheit = true;
 
         function updateData() {
             $SCRIPT_ROOT = ''
@@ -31,7 +31,7 @@
             }
 
             for (key in temperatureUrls) {
-                updateTemperatureData(key, temperatureUrls[key], tempInFahrenheit);
+                updateTemperatureData(key, temperatureUrls[key], displayTemperatureInFahrenheit);
             }
 
 
@@ -57,8 +57,8 @@
         $(function() {    
             $("#temp_type").click(function(e) {
                 e.preventDefault();
-                tempInFahrenheit = !tempInFahrenheit;
-                if (tempInFahrenheit) {
+                displayTemperatureInFahrenheit = !displayTemperatureInFahrenheit;
+                if (displayTemperatureInFahrenheit) {
                     $("#temp_type").html('<a href="#">c&deg;</a>|f&deg;');
                 } else {
                     $("#temp_type").html('c&deg;|<a href="#">f&deg;</a>');
