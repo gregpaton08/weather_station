@@ -15,22 +15,32 @@
             $.getJSON($SCRIPT_ROOT + '/get_outside_temperature', {}, function(data) {
                 $("#outsidetemp").text(data.temperature);
             });
-            $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
-                $html = ''
-                $.each(data.forecast, function(index, value) {
-                    $html += index + ' '
-                    $.each(value, function(index, value) {
-                        $html += index + ' ' value + ' '
+            // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
+            //     $html = ''
+            //     $.each(data.forecast, function(index, value) {
+            //         $html += index + ' '
+            //         $.each(value, function(index, value) {
+            //             $html += index + ' ' value + ' '
                         
-                    });
-                });
-                $("#hourly_forecast").html($html).show();
-            });
+            //         });
+            //     });
+            //     $("#hourly_forecast").html($html).show();
+            // });
         }
         $(function() {
             setInterval(updateData, 5000);
         });
+
+        $(function() {    
+            $("#temp_type").click(function(e) {
+                e.preventDefault();
+                console.log('temp type clicked')
+            });
+            return false;    
+        });
+
     </script>
+    <div id="temp_type"><a href="#">c&deg;</a>|f&deg;</div>
     <div class="center">
         <span class="intemp">
             <!-- <img src="static/home.png" height="50" width="50"> -->
