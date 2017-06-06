@@ -25,6 +25,7 @@ To do:
     * Access database in flask app http://flask.pocoo.org/docs/0.12/tutorial/schema/
 * Graph inside temp
 * Graph forecast for outside
+* Add option to choose celsius or fahrenheit
 
 
 Done:
