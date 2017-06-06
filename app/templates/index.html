@@ -7,6 +7,8 @@
 <body>
     <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
     <script type=text/javascript>
+        var tempInFahrenheit = true;
+
         function updateData() {
             $SCRIPT_ROOT = ''
             $.getJSON($SCRIPT_ROOT + '/get_inside_temperature', {}, function(data) {
@@ -35,8 +37,13 @@
             $("#temp_type").click(function(e) {
                 e.preventDefault();
                 console.log('temp type clicked')
+                tempInFahrenheit = !tempInFahrenheit;
+                if (tempInFahrenheit) {
+                    $("#temp_type").html('<a href="#">c&deg;</a>|f&deg;');
+                } else {
+                    $("#temp_type").html('c&deg;|<a href="#">f&deg;</a>');
+                }
             });
-            return false;    
         });
 
     </script>
