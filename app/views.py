@@ -35,6 +35,12 @@ def get_outside_temperature_c():
     return jsonify(temperature=round(get_weather.get_temperature_c(), 0))
 
 
+@app.route('/get_temperature_data_c')
+def get_temperature__date_c():
+    return jsonify(inside_temperature=round(thermometer.read_temp_c(), 0),
+                   outside_temperature=round(get_weather.get_temperature_c(), 0))
+
+
 @app.route('/get_sunrise')
 def get_sunrise():
     return jsonify(sunrise=get_weather.get_sunrise())
