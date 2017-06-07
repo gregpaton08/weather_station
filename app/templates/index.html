@@ -10,19 +10,25 @@
         var displayTemperatureInFahrenheit = true;
         var insideTemperatureC = 0;
         var outsideTemperatureC = 0;
+        var forecastData = [];
 
         function convertCelsiusToFahrenheit(celsius) {
             return Math.round(((celsius * 9.0) / 5.0) + 32.0);
         }
 
-        function updateTemperature() {
+        function convertTemperature(temperature) {
             if (displayTemperatureInFahrenheit) {
-                $('#insidetemp').text(convertCelsiusToFahrenheit(insideTemperatureC));
-                $('#outsidetemp').text(convertCelsiusToFahrenheit(outsideTemperatureC));
+                return convertCelsiusToFahrenheit(temperature);
             } else {
-                $('#insidetemp').text(insideTemperatureC);
-                $('#outsidetemp').text(outsideTemperatureC);
+                return temperature;
             }
+        }
+
+        function updateTemperature() {
+            $('#insidetemp').text(convertTemperature(insideTemperatureC));
+            $('#outsidetemp').text(convertTemperature(outsideTemperatureC));
+
+            // $('#hourly_forecast .')
         }
 
         function updateData() {
@@ -39,18 +45,20 @@
                 updateTemperature();
             });
 
-
-            // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
-            //     $html = ''
-            //     $.each(data.forecast, function(index, value) {
-            //         $html += index + ' '
-            //         $.each(value, function(index, value) {
-            //             $html += index + ' ' value + ' '
-                        
-            //         });
-            //     });
-            //     $("#hourly_forecast").html($html).show();
-            // });
+            $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
+                $html = ''
+                $.each(data.forecast, function(index, value) {
+                    $html += index + ' ' + value.FCTTIME.hour + ' '  + value.temp.metric + '<br/>';
+                    // $.each(value, function(index, value) {
+                    //     $html += index;// + ' ' + value + ' ';
+                    // });
+                    data = {}
+                    data['hour'] = value.FCTTIME.hour;
+                    data['temperature'] = value.temp.metric;
+                    forecastData.push(data);
+                });
+                // $("#hourly_forecast").html($html).show();
+            });
         }
 
         updateData();
