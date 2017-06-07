@@ -70,6 +70,7 @@
                     data = {}
                     data['hour'] = value.FCTTIME.hour;
                     data['temperature'] = value.temp.metric;
+                    data['condition'] = value.condition;
                     forecastData.push(data);
                 });
 
@@ -121,27 +122,6 @@
     <div id="hourly_forecast">
         <table>
             <tr>
-            {% for hour in hourly %}
-                <td>
-                    <div class="time">
-                        {% if hour.FCTTIME.hour|int == 0 %}
-                            12 am
-                        {% elif hour.FCTTIME.hour|int > 12 %}
-                            {{ hour.FCTTIME.hour|int - 12 }} pm
-                        {% elif hour.FCTTIME.hour|int == 12 %}
-                            {{ hour.FCTTIME.hour|int }} pm
-                        {% else %}
-                            {{ hour.FCTTIME.hour }} am
-                        {% endif %}
-                    </div>
-                    <div class="temperature">
-                        {{ hour.temp.english }}&deg;
-                    </div>
-<!--                     <div class="condition">
-                        {{ hour.condition }}
-                    </div> -->
-                </td>
-            {% endfor %}
             </tr>
     </table>
     </div>
