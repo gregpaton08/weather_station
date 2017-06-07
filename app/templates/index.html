@@ -39,10 +39,11 @@
         function updateTemperature() {
             $('#insidetemp').text(convertTemperature(insideTemperatureC));
             $('#outsidetemp').text(convertTemperature(outsideTemperatureC));
+        }
 
+        function updateForecast() {
             $html = '';
             $.each(forecastData, function(index, value) {
-                console.log(value.temperature);
                 $html += '<td><div class="time">' + formatTime(value.hour) + '</div><div class="temperature">' + String(convertTemperature(value.temperature)) + '&deg;</div></td>';
 
                 return index < 12;
@@ -65,18 +66,14 @@
             });
 
             $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
-                $html = ''
                 $.each(data.forecast, function(index, value) {
-                    $html += index + ' ' + value.FCTTIME.hour + ' '  + value.temp.metric + '<br/>';
-                    // $.each(value, function(index, value) {
-                    //     $html += index;// + ' ' + value + ' ';
-                    // });
                     data = {}
                     data['hour'] = value.FCTTIME.hour;
                     data['temperature'] = value.temp.metric;
                     forecastData.push(data);
                 });
-                // $("#hourly_forecast").html($html).show();
+
+                updateForecast();
             });
         }
 
@@ -96,6 +93,7 @@
                     $("#temp_type").html('c&deg;|<a href="#">f&deg;</a>');
                 }
                 updateTemperature();
+                updateForecast();
             });
         });
 
