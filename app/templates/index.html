@@ -26,19 +26,24 @@
                 return Math.round(((celsius * 9.0) / 5.0) + 32.0);
             }
 
-            function updateTemperatureData(selector, urlPath, tempInF) {
-                $.getJSON($SCRIPT_ROOT + urlPath, {}, function(data) {
-                    var temperature = data.temperature;
-                    if (tempInF) {
-                        temperature = convertCelsiusToFahrenheit(temperature);
-                    }
-                    $(selector).text(temperature);
-                });
-            }
+            // function updateTemperatureData(selector, urlPath, tempInF) {
+            //     $.getJSON($SCRIPT_ROOT + urlPath, {}, function(data) {
+            //         var temperature = data.temperature;
+            //         if (tempInF) {
+            //             temperature = convertCelsiusToFahrenheit(temperature);
+            //         }
+            //         $(selector).text(temperature);
+            //     });
+            // }
 
-            for (key in temperatureUrls) {
-                updateTemperatureData(key, temperatureUrls[key], displayTemperatureInFahrenheit);
-            }
+            // for (key in temperatureUrls) {
+            //     updateTemperatureData(key, temperatureUrls[key], displayTemperatureInFahrenheit);
+            // }
+
+            $.getJSON($SCRIPT_ROOT + '/get_temperature_data_c', {}, function(data) {
+                $('#insidetemp').text(data.inside_temperature);
+                $('#outsidetemp').text(data.outside_temperature);
+            });
 
 
             // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
