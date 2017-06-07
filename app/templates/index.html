@@ -12,7 +12,8 @@
         var outsideTemperatureC = 0;
 
         function updateTemperature() {
-
+            $('#insidetemp').text(insideTemperatureC);
+            $('#outsidetemp').text(outsideTemperatureC);
         }
 
         function updateData() {
@@ -41,8 +42,10 @@
             // }
 
             $.getJSON($SCRIPT_ROOT + '/get_temperature_data_c', {}, function(data) {
-                $('#insidetemp').text(data.inside_temperature);
-                $('#outsidetemp').text(data.outside_temperature);
+                insideTemperatureC = data.inside_temperature;
+                outsideTemperatureC = data.outside_temperature;
+
+                updateTemperature();
             });
 
 
