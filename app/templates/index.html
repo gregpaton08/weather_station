@@ -11,9 +11,18 @@
         var insideTemperatureC = 0;
         var outsideTemperatureC = 0;
 
+        function convertCelsiusToFahrenheit(celsius) {
+            return Math.round(((celsius * 9.0) / 5.0) + 32.0);
+        }
+
         function updateTemperature() {
-            $('#insidetemp').text(insideTemperatureC);
-            $('#outsidetemp').text(outsideTemperatureC);
+            if (displayTemperatureInFahrenheit) {
+                $('#insidetemp').text(convertCelsiusToFahrenheit(insideTemperatureC));
+                $('#outsidetemp').text(convertCelsiusToFahrenheit(outsideTemperatureC));
+            } else {
+                $('#insidetemp').text(insideTemperatureC);
+                $('#outsidetemp').text(outsideTemperatureC);
+            }
         }
 
         function updateData() {
@@ -22,24 +31,6 @@
             var temperatureUrls = {};
             temperatureUrls['#insidetemp'] = '/get_inside_temperature_c';
             temperatureUrls['#outsidetemp'] = '/get_outside_temperature_c';
-
-            function convertCelsiusToFahrenheit(celsius) {
-                return Math.round(((celsius * 9.0) / 5.0) + 32.0);
-            }
-
-            // function updateTemperatureData(selector, urlPath, tempInF) {
-            //     $.getJSON($SCRIPT_ROOT + urlPath, {}, function(data) {
-            //         var temperature = data.temperature;
-            //         if (tempInF) {
-            //             temperature = convertCelsiusToFahrenheit(temperature);
-            //         }
-            //         $(selector).text(temperature);
-            //     });
-            // }
-
-            // for (key in temperatureUrls) {
-            //     updateTemperatureData(key, temperatureUrls[key], displayTemperatureInFahrenheit);
-            // }
 
             $.getJSON($SCRIPT_ROOT + '/get_temperature_data_c', {}, function(data) {
                 insideTemperatureC = data.inside_temperature;
