@@ -23,7 +23,9 @@ def get_newest_temperature(connection=None):
     result = cursor.fetchone()
     if need_to_close_connection:
         connection.close()
-    return result
+    if result is not None:
+        return float(result[1])
+    return None
 
 
 def get_connection():

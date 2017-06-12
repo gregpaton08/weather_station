@@ -1,7 +1,8 @@
-from flask import render_template, jsonify
+from flask import render_template, jsonify, g
 from app import app
 import get_weather
 import thermometer
+import thermometer_db
 
 @app.route('/')
 @app.route('/index')
@@ -17,7 +18,7 @@ def index():
 
 @app.route('/get_temperature_data_c')
 def get_temperature_date_c():
-    return jsonify(inside_temperature=round(thermometer.get_temp_c(), 0),
+    return jsonify(inside_temperature=round(thermometer.get_temp_c(get_db_connection()), 0),
                    outside_temperature=round(get_weather.get_temperature_c(), 0))
 
 
@@ -34,3 +35,9 @@ def get_sunset():
 @app.route('/get_hourly_forecast')
 def get_hourly_forecast():
     return jsonify(forecast=get_weather.get_hourly_forecast())
+
+
+def get_db_connection():
+    if not hasattr(g, 'sqlite_db'):
+        g.sqlite_db = thermometer_db.get_connection()
+    return g.sqlite_db
