@@ -6,6 +6,7 @@ import thermometer
 
 
 DATABASE_FILE_NAME = 'test.db'
+INDOOR_TEMPERATURE_TABLE_NAME = 'INDOOR_TEMPERATURE'
 
 
 def does_table_exist(connection, table_name):
@@ -16,7 +17,7 @@ def does_table_exist(connection, table_name):
 
 def get_newest_temperature():
     connection = sqlite3.connect(DATABASE_FILE_NAME)
-    cursor = connection.execute('SELECT MAX(TIME), TEMPERATURE FROM INDOOR_TEMPERATURE;')
+    cursor = connection.execute('SELECT MAX(TIME), TEMPERATURE FROM {0};'.format(INDOOR_TEMPERATURE_TABLE_NAME))
     result = cursor.fetchone()
     connection.close()
     if result is not None:
@@ -29,15 +30,15 @@ if __name__ == '__main__':
 
     # time = int(round(time.time(), 0))
     # temperature = int(thermometer.read_temp_c() * 100)
-    # sqlite_command = 'INSERT INTO INDOOR_TEMPERATURE (TIME, TEMPERATURE) VALUES ({0}, {1});'.format(time, temperature)
+    # sqlite_command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2});'.format(INDOOR_TEMPERATURE_TABLE_NAME, time, temperature)
     # print(sqlite_command)
     # conn.execute(sqlite_command)
     # conn.commit()
 
-    # print does_table_exist(conn, 'INDOOR_TEMPERATURE')
+    # print does_table_exist(conn, INDOOR_TEMPERATURE_TABLE_NAME)
     print get_newest_temperature()
 
-    # cursor = conn.execute('SELECT * FROM INDOOR_TEMPERATURE')
+    # cursor = conn.execute('SELECT * FROM {0}'.format(INDOOR_TEMPERATURE_TABLE_NAME))
     # for row in cursor:
     #     print(row)
 
