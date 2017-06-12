@@ -36,6 +36,6 @@ def __convert_celsius_to_fahrenheit(celsius):
 
 
 if __name__ == '__main__':
-    temperature = read_temp()
+    temperature = read_temp_c()
     print(temperature)
-    print(convert_celsius_to_fahrenheit(temperature))
+    print(__convert_celsius_to_fahrenheit(temperature))
