@@ -1,25 +1,22 @@
 Weather API:
 Docs
-	https://www.wunderground.com/weather/api/d/docs?MR=1
+    https://www.wunderground.com/weather/api/d/docs?MR=1
 Example:
-	http://api.wunderground.com/api/<API KEY>/conditions/q/NJ/Collingswood.json
+    http://api.wunderground.com/api/<API KEY>/conditions/q/NJ/Collingswood.json
     http://api.wunderground.com/api/<API KEY>/forecast/q/NJ/Collingswood.json
     # for sunrise/sunset
     http://api.wunderground.com/api/<API KEY>/astronomy/q/NJ/Collingswood.json
 
 Current Task:
-* Cache the weather results with a timestamp to limit number of API calls
-	* Display the time it was last updated
-	* Add an option to force refresh? <-- NO
 
 To do:
 * Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
 * Design the interface
-	* House graphic containing indoor temp
+    * House graphic containing indoor temp
     * Design graphics in Sketch
-	* Sun (or clouds or current weather) alongside outdoor temp
-* List out the days (hour by hour) forecast
-* List out the week (day by day) forecast
+    * Sun (or clouds or current weather) alongside outdoor temp
+* List out the day's (hour by hour) forecast
+* List out the week's (day by day) forecast
 * Add historical data (data base to store inside temp?)
     * Run background process on RPi (chron) to update database with indoor temperature every 10 minutes
     * Access database in flask app http://flask.pocoo.org/docs/0.12/tutorial/schema/
@@ -38,3 +35,6 @@ Done:
 * Generate new API key
 * Add option to choose celsius or fahrenheit
 * Compute C to F conversion in javascript to avoid network access to the server
+* Cache the weather results with a timestamp to limit number of API calls
+    * Display the time it was last updated
+    * Add an option to force refresh? <-- NO
