@@ -25,7 +25,8 @@ def save_cache_data(key, data):
     pickle.dump(cache_data, open(api_cache_file, 'wb'))
 
 
-def get_cache_data(key, within_last_num_seconds=60):
+# Return the cached data if it is less than 10 minutes old. Limited to 500 API calls per day (one per 2.88 minutes).
+def get_cache_data(key, within_last_num_seconds=600):
     cache_data = __load_cache_data()
     if not cache_data.get(key, None):
         return None
