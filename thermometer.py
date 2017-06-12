@@ -31,6 +31,13 @@ def read_temp_f():
     return __convert_celsius_to_fahrenheit(read_temp_c())
 
 
+def get_temp_c(db_connection=None):
+    if db_connection is None:
+        return read_temp_c()
+
+    
+
+
 def __convert_celsius_to_fahrenheit(celsius):
     return celsius * 9.0 / 5.0 + 32.0
 
