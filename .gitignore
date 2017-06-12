@@ -4,3 +4,4 @@ flask
 *.p
 .DS_Store
 ._*
+*.db
