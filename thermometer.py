@@ -15,7 +15,7 @@ def __read_sensor():
     return lines
 
 
-def read_temp_c():
+def read_temperature_c():
     if not os.path.isfile(temp_sensor):
         return -200.0
 
@@ -28,16 +28,16 @@ def read_temp_c():
     return temperature
 
 
-def read_temp_f():
-    return __convert_celsius_to_fahrenheit(read_temp_c())
+def read_temperature_f():
+    return __convert_celsius_to_fahrenheit(read_temperature_c())
 
 
-def get_temp_c(db_connection=None):
+def get_temperature_c(db_connection=None):
     if db_connection is None:
-        return read_temp_c()
+        return read_temperature_c()
     db_result = thermometer_db.get_newest_temperature(db_connection)
     if db_result is None:
-        return read_temp_c()
+        return read_temperature_c()
     return db_result
 
 
@@ -46,6 +46,6 @@ def __convert_celsius_to_fahrenheit(celsius):
 
 
 if __name__ == '__main__':
-    temperature = read_temp_c()
+    temperature = read_temperature_c()
     print(temperature)
     print(__convert_celsius_to_fahrenheit(temperature))
