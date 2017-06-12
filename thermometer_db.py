@@ -17,7 +17,7 @@ def does_table_exist(connection, table_name):
 def get_newest_temperature(connection=None):
     need_to_close_connection = False
     if connection is None:
-        connection = sqlite3.connect(DATABASE_FILE_NAME)
+        connection = get_connection()
         need_to_close_connection = True
     cursor = connection.execute('SELECT MAX(TIME), TEMPERATURE FROM {0};'.format(INDOOR_TEMPERATURE_TABLE_NAME))
     result = cursor.fetchone()
@@ -26,8 +26,12 @@ def get_newest_temperature(connection=None):
     return result
 
 
+def get_connection():
+    return sqlite3.connect(DATABASE_FILE_NAME)
+
+
 if __name__ == '__main__':
-    conn = sqlite3.connect(DATABASE_FILE_NAME)
+    conn = get_connection()
 
     # time = int(round(time.time(), 0))
     # temperature = 95
