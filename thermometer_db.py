@@ -2,7 +2,6 @@
 
 import sqlite3
 import time
-import thermometer
 
 
 DATABASE_FILE_NAME = 'test.db'
@@ -15,23 +14,24 @@ def does_table_exist(connection, table_name):
     return result is not None and table_name == result[0]
 
 
-def get_newest_temperature():
-    connection = sqlite3.connect(DATABASE_FILE_NAME)
+def get_newest_temperature(connection=None):
+    need_to_close_connection = False
+    if connection is None:
+        connection = sqlite3.connect(DATABASE_FILE_NAME)
+        need_to_close_connection = True
     cursor = connection.execute('SELECT MAX(TIME), TEMPERATURE FROM {0};'.format(INDOOR_TEMPERATURE_TABLE_NAME))
     result = cursor.fetchone()
-    connection.close()
-    if result is not None:
-        return result
-    return [ -1, -1 ]
+    if need_to_close_connection:
+        connection.close()
+    return result
 
 
 if __name__ == '__main__':
     conn = sqlite3.connect(DATABASE_FILE_NAME)
 
     # time = int(round(time.time(), 0))
-    # temperature = int(thermometer.read_temp_c() * 100)
+    # temperature = 95
     # sqlite_command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2});'.format(INDOOR_TEMPERATURE_TABLE_NAME, time, temperature)
-    # print(sqlite_command)
     # conn.execute(sqlite_command)
     # conn.commit()
 

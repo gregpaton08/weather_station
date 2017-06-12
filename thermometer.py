@@ -2,6 +2,7 @@
 
 import os
 import time
+import thermometer_db
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -34,8 +35,10 @@ def read_temp_f():
 def get_temp_c(db_connection=None):
     if db_connection is None:
         return read_temp_c()
-
-    
+    db_result = thermometer_db.get_newest_temperature(db_connection)
+    if db_result is None:
+        return read_temp_c()
+    return db_result
 
 
 def __convert_celsius_to_fahrenheit(celsius):
