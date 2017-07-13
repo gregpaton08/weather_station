@@ -52,6 +52,42 @@
             $('#hourly_forecast tr').html($html).show();
         }
 
+        function drawChart() {
+            tableData = [['Time', 'Indoor', 'Outdoor']];
+            var arrayLength = Math.min(forecastData.length, 12);
+            for (var i = 0; i < arrayLength; i++) {
+                console.log(forecastData[i]);
+                //Do something
+                current = forecastData[i]
+                tableData.push([
+                    i,
+                    // parseInt(current['hour']),
+                    80,
+                    convertTemperature(parseInt(current['temperature']))
+                ]);
+            }
+            console.log('TESTINGGGGG');
+
+            var data = google.visualization.arrayToDataTable(tableData);
+            // var data = google.visualization.arrayToDataTable([
+            //     ['Time', 'Indohkor', 'Outdoor'],
+            //     ['2004',  1000,      400],
+            //     ['2005',  1170,      460],
+            //     ['2006',  660,       1120],
+            //     ['2007',  1030,      540]
+            // ]);
+
+            var options = {
+                // title: 'Company Performance',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+
         function updateData() {
             $SCRIPT_ROOT = ''
 
@@ -72,6 +108,9 @@
                 });
 
                 updateForecast();
+            
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
             });
         }
 
@@ -94,29 +133,6 @@
                 updateForecast();
             });
         });
-        
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Time', 'Indoor', 'Outdoor'],
-                ['2004',  1000,      400],
-                ['2005',  1170,      460],
-                ['2006',  660,       1120],
-                ['2007',  1030,      540]
-            ]);
-
-            var options = {
-                // title: 'Company Performance',
-                curveType: 'function',
-                legend: { position: 'bottom' }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-        }
     </script>
     <div id="temp_type"><a href="#">c&deg;</a>|f&deg;</div>
     <div class="center">
