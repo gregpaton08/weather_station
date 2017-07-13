@@ -27,15 +27,6 @@ def read_temperature_c():
     return temperature
 
 
-def read_temperature_f():
-    return __convert_celsius_to_fahrenheit(read_temperature_c())
-
-
-def __convert_celsius_to_fahrenheit(celsius):
-    return celsius * 9.0 / 5.0 + 32.0
-
-
 if __name__ == '__main__':
     temperature = read_temperature_c()
     print(temperature)
-    print(__convert_celsius_to_fahrenheit(temperature))
