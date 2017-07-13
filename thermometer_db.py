@@ -19,8 +19,12 @@ def get_newest_temperature(connection=None):
     if connection is None:
         connection = get_connection()
         need_to_close_connection = True
-    cursor = connection.execute('SELECT MAX(TIME), TEMPERATURE FROM {0};'.format(INDOOR_TEMPERATURE_TABLE_NAME))
-    result = cursor.fetchone()
+
+    result = None
+    if does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
+        cursor = connection.execute('SELECT MAX(TIME), TEMPERATURE FROM {0};'.format(INDOOR_TEMPERATURE_TABLE_NAME))
+        result = cursor.fetchone()
+
     if need_to_close_connection:
         connection.close()
     if result is not None:
