@@ -52,3 +52,9 @@
     vertical-align: middle;
     opacity: 0.5;
 }
+
+#curve_chart {
+    margin-left:100px;
+    width: 800px;
+    height: 500px;
+}

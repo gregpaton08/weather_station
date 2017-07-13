@@ -59,13 +59,20 @@
             data.addColumn('number', 'Outdoor');
 
             // TODO: get the past 12 hours of indoor temperate data when available
+            for (var i = 0; i < 12; i++) {
+                data.addRow([
+                    formatTime(forecastData[0]['hour'] - 12 + i),
+                    convertTemperature(29),
+                    null
+                ]);
+            }
 
             var arrayLength = Math.min(forecastData.length, 12);
             for (var i = 0; i < arrayLength; i++) {
                 current = forecastData[i]
                 data.addRow([
                     formatTime(parseInt(current['hour'])),
-                    null,
+                    i == 0 ? convertTemperature(29) : null,
                     convertTemperature(parseInt(current['temperature']))
                 ]);
             }
@@ -73,7 +80,9 @@
             var options = {
                 // title: 'Company Performance',
                 curveType: 'function',
-                legend: { position: 'bottom' }
+                legend: { position: 'bottom' },
+                chartArea: { left: 20, top: 10, width: '100%', height: '80%' },
+                vAxis: { gridlines: { color: '#DDD', count: 3 }}
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -154,7 +163,7 @@
     </table>
     </div>
 
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="curve_chart"></div>
 
 </body>
 </html>
