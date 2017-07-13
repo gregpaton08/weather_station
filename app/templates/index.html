@@ -56,8 +56,6 @@
             tableData = [['Time', 'Indoor', 'Outdoor']];
             var arrayLength = Math.min(forecastData.length, 12);
             for (var i = 0; i < arrayLength; i++) {
-                console.log(forecastData[i]);
-                //Do something
                 current = forecastData[i]
                 tableData.push([
                     i,
@@ -66,16 +64,8 @@
                     convertTemperature(parseInt(current['temperature']))
                 ]);
             }
-            console.log('TESTINGGGGG');
 
             var data = google.visualization.arrayToDataTable(tableData);
-            // var data = google.visualization.arrayToDataTable([
-            //     ['Time', 'Indohkor', 'Outdoor'],
-            //     ['2004',  1000,      400],
-            //     ['2005',  1170,      460],
-            //     ['2006',  660,       1120],
-            //     ['2007',  1030,      540]
-            // ]);
 
             var options = {
                 // title: 'Company Performance',
