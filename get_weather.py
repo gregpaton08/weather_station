@@ -4,6 +4,10 @@ import urllib2
 import json
 import apicache
 
+'''
+Module to get weather data from the Weather Underground API.
+'''
+
 
 def get_api_key():
     with open('api_key.txt') as file:
