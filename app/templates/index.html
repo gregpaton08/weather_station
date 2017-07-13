@@ -55,10 +55,6 @@
         function updateData() {
             $SCRIPT_ROOT = ''
 
-            var temperatureUrls = {};
-            temperatureUrls['#insidetemp'] = '/get_inside_temperature_c';
-            temperatureUrls['#outsidetemp'] = '/get_outside_temperature_c';
-
             $.getJSON($SCRIPT_ROOT + '/get_temperature_data_c', {}, function(data) {
                 insideTemperatureC = data.inside_temperature;
                 outsideTemperatureC = data.outside_temperature;
