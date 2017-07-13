@@ -9,6 +9,9 @@ Module to get weather data from the Weather Underground API.
 '''
 
 
+API_URL_LOCATION = 'NJ/Collingswood.json'
+
+
 def get_api_key():
     with open('api_key.txt') as file:
         return file.read().strip()
@@ -30,7 +33,7 @@ def __get_data_for_url_path(url_path):
 
 
 def __get_current_observation_for_key(key):
-    url_path = '/conditions/q/NJ/Collingswood.json'
+    url_path = '/conditions/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
     return weather_data.get('current_observation', {}).get(key, None)
 
@@ -48,13 +51,13 @@ def get_condition():
 
 
 def get_hourly_forecast(num_hours=-1):
-    url_path = '/hourly/q/NJ/Collingswood.json'
+    url_path = '/hourly/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
     return weather_data.get('hourly_forecast', [])[:num_hours]
 
 
 def __get_astronomy_data():
-    url_path = '/astronomy/q/NJ/Collingswood.json'
+    url_path = '/astronomy/q/' + API_URL_LOCATION
     return __get_data_for_url_path(url_path)
 
 
