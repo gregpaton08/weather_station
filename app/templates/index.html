@@ -82,7 +82,9 @@
                 curveType: 'function',
                 legend: { position: 'bottom' },
                 chartArea: { left: 20, top: 10, width: '100%', height: '80%' },
-                vAxis: { gridlines: { color: '#DDD', count: 3 }}
+                vAxis: { gridlines: { color: '#DDD', count: 3 }},
+                // vAxis: { minorGridlines: { count: 1 }},
+                hAxis: { showTextEvery: 3 }
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -133,6 +135,7 @@
                 }
                 updateTemperature();
                 updateForecast();
+                drawChart();
             });
         });
     </script>
