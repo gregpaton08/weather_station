@@ -4,6 +4,10 @@ import pickle
 import os
 import datetime
 
+'''
+Module to cache the data received from the Weather Underground API. Since the API calls are limited to 500/day the number of calls must be throttled. So, the data is cached and update periodically.
+'''
+
 api_cache_file = 'apicache.p'
 
 
