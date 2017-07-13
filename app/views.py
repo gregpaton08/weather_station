@@ -16,7 +16,7 @@ def index():
 
 @app.route('/get_temperature_data_c')
 def get_temperature_date_c():
-    return jsonify(inside_temperature=round(thermometer.get_temperature_c(get_db_connection()), 0),
+    return jsonify(inside_temperature=round(thermometer_db.get_temperature_c(get_db_connection()), 0),
                    outside_temperature=round(get_weather.get_temperature_c(), 0))
 
 
