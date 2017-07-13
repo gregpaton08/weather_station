@@ -53,19 +53,22 @@
         }
 
         function drawChart() {
-            tableData = [['Time', 'Indoor', 'Outdoor']];
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Time');
+            data.addColumn('number', 'Indoor');
+            data.addColumn('number', 'Outdoor');
+
+            // TODO: get the past 12 hours of indoor temperate data when available
+
             var arrayLength = Math.min(forecastData.length, 12);
             for (var i = 0; i < arrayLength; i++) {
                 current = forecastData[i]
-                tableData.push([
-                    i,
-                    // parseInt(current['hour']),
-                    80,
+                data.addRow([
+                    formatTime(parseInt(current['hour'])),
+                    null,
                     convertTemperature(parseInt(current['temperature']))
                 ]);
             }
-
-            var data = google.visualization.arrayToDataTable(tableData);
 
             var options = {
                 // title: 'Company Performance',
