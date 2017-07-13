@@ -10,6 +10,7 @@ Example:
 Current Task:
 
 To do:
+* Track indoor/outdoor temperature once every hour (register cron job or python process?)
 * Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
 * Design the interface
     * House graphic containing indoor temp
