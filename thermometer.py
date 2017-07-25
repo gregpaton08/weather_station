@@ -4,9 +4,6 @@ import os
 import time
 import subprocess
 
-os.system('modprobe w1-gpio')
-os.system('modprobe w1-therm')
-
 temp_sensor = '/sys/bus/w1/devices/28-000004abf982/w1_slave'
 
 
