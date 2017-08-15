@@ -58,6 +58,8 @@
             data.addColumn('number', 'Indoor');
             data.addColumn('number', 'Outdoor');
 
+            // Populate historical indoor temperature data for the chart.
+            // TODO: need an API to pull actual data from the database.
             // TODO: get the past 12 hours of indoor temperate data when available
             for (var i = 0; i < 12; i++) {
                 data.addRow([
@@ -67,6 +69,7 @@
                 ]);
             }
 
+            // Populate outdoor temperature forecast data for the chart. Note the two plots overlap so the for i == 0 the current indoor temperature is plotted.
             var arrayLength = Math.min(forecastData.length, 12);
             for (var i = 0; i < arrayLength; i++) {
                 current = forecastData[i]
