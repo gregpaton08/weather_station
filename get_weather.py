@@ -3,6 +3,7 @@
 import urllib2
 import json
 import apicache
+import os
 
 '''
 Module to get weather data from the Weather Underground API.
@@ -13,6 +14,9 @@ API_URL_LOCATION = 'NJ/Collingswood.json'
 
 
 def get_api_key():
+    key = os.environ.get('WU_API_KEY', None)
+    if key:
+        return key
     with open('api_key.txt') as file:
         return file.read().strip()
     return ''
