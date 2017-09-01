@@ -4,6 +4,7 @@ import get_weather
 import thermometer
 import thermometer_db
 from flask_httpauth import HTTPBasicAuth
+import os
 
 auth = HTTPBasicAuth()
 
@@ -46,12 +47,17 @@ def update_temperature():
 
 @auth.verify_password
 def verify_password(username, password):
-    # user = User.query.filter_by(username = username).first()
-    # if not user or not user.verify_password(password):
-    #     return False
-    # g.user = user
-    print(username)
-    return True
+    print(get_api_password())
+    return password == get_api_password()
+
+
+def get_api_password():
+    key = os.environ.get('REST_API_PASSWORD', None)
+    if key:
+        return key
+    with open('api_password.txt') as file:
+        return file.read().strip()
+    return ''
 
 
 def get_db_connection():
