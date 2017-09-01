@@ -71,7 +71,6 @@ def store_temperature(temperature):
     connection.commit()
 
 
-
 def store_current_temperature():
     store_temperature(thermometer.read_temperature_c())
 
