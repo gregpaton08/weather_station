@@ -17,7 +17,7 @@ def __does_table_exist(connection, table_name):
 
 
 def __scale_temperature_for_database(temperature):
-    return int(temperature * 10 + 0.5)
+    return int(float(temperature) * 10 + 0.5)
 
 
 def __sacle_temperature_for_display(temperature):
@@ -53,6 +53,23 @@ def get_temperature_c(db_connection=None):
     if db_result is None:
         return thermometer.read_temperature_c()
     return __sacle_temperature_for_display(db_result)
+
+
+def store_temperature(temperature):
+    connection = get_connection()
+    cursor = connection.cursor()
+    
+    # Create teh table if it does not exist.
+    if not __does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
+        cursor.execute(open('schema.sql', 'r').read())
+        connection.commit()
+    
+    command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2})'.format(INDOOR_TEMPERATURE_TABLE_NAME, int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds()), __scale_temperature_for_database(temperature))
+    print command
+    cursor.execute(command)
+        
+    connection.commit()
+
 
 
 def store_current_temperature():

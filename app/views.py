@@ -45,6 +45,7 @@ def update_temperature():
     if not request.json or not 'temperature' in request.json or 'time' not in request.json:
         abort(400)
     print(request.json)
+    thermometer_db.store_temperature(request.json['temperature'])
     return jsonify({ 'key' : 'val' })
 
 
