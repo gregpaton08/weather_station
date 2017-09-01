@@ -11,6 +11,7 @@
 * Make graph interactive (zoom, scroll) like Google finance
 * Mobile site?
 * Consider updating site colors
+* Graph plot shouldn't move when switching between C and F
 
 <img src="invert.png" width="600">
 
