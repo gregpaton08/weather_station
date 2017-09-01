@@ -1,4 +1,4 @@
-from flask import render_template, jsonify, g
+from flask import render_template, jsonify, g, request
 from app import app
 import get_weather
 import thermometer
@@ -39,10 +39,13 @@ def get_hourly_forecast():
     return jsonify(forecast=get_weather.get_hourly_forecast())
 
 
-@app.route('/update_temperature')
+@app.route('/update_temperature', methods=['POST'])
 @auth.login_required
 def update_temperature():
-  return jsonify({ 'key' : 'val' })
+    if not request.json or not 'temperature' in request.json or 'time' not in request.json:
+        abort(400)
+    print(request.json)
+    return jsonify({ 'key' : 'val' })
 
 
 @auth.verify_password
