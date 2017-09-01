@@ -14,6 +14,8 @@
 
 ![inverted site colors](invert.png =200x200)
 
+<img src="https://github.com/favicon.ico" width="48">
+
 ### Complete
 
 ## Notes
