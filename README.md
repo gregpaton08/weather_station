@@ -12,8 +12,6 @@
 * Mobile site?
 * Consider updating site colors
 
-![inverted site colors](invert.png =200x200)
-
 <img src="invert.png" width="600">
 
 ### Complete
