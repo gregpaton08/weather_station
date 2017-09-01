@@ -47,7 +47,6 @@ def update_temperature():
 
 @auth.verify_password
 def verify_password(username, password):
-    print(get_api_password())
     return password == get_api_password()
 
 
