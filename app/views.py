@@ -35,6 +35,11 @@ def get_hourly_forecast():
     return jsonify(forecast=get_weather.get_hourly_forecast())
 
 
+@app.route('/update_temperature')
+def update_temperature():
+  return jsonify({ 'key' : 'val' })
+
+
 def get_db_connection():
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = thermometer_db.get_connection()
