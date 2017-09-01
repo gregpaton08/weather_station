@@ -1,0 +1,1 @@
+curl -u gpaton:$(cat api_password.txt) -i -H "Content-Type: application/json" -X POST -d '{"temperature":"21.3","time":"2017-08-31 23:37"}'  http://localhost:8000/update_temperature
