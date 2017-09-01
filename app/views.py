@@ -3,6 +3,9 @@ from app import app
 import get_weather
 import thermometer
 import thermometer_db
+from flask_httpauth import HTTPBasicAuth
+
+auth = HTTPBasicAuth()
 
 @app.route('/')
 @app.route('/index')
@@ -36,8 +39,19 @@ def get_hourly_forecast():
 
 
 @app.route('/update_temperature')
+@auth.login_required
 def update_temperature():
   return jsonify({ 'key' : 'val' })
+
+
+@auth.verify_password
+def verify_password(username, password):
+    # user = User.query.filter_by(username = username).first()
+    # if not user or not user.verify_password(password):
+    #     return False
+    # g.user = user
+    print(username)
+    return True
 
 
 def get_db_connection():
