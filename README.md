@@ -11,6 +11,7 @@
 * Make graph interactive (zoom, scroll) like Google finance
 * Mobile site?
 * Consider updating site colors
+<img="invert.png" width="200" height="200"/>
 ![inverted site colors](invert.png =100x)
 
 ### Complete
