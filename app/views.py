@@ -42,7 +42,7 @@ def get_hourly_forecast():
 @app.route('/update_temperature', methods=['POST'])
 @auth.login_required
 def update_temperature():
-    if not request.json or not 'temperature' in request.json or 'time' not in request.json:
+    if not request.json or not 'temperature' in request.json:
         abort(400)
     print(request.json)
     thermometer_db.store_temperature(request.json['temperature'])
