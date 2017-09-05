@@ -59,11 +59,11 @@ def get_newest_temperature(connection=None):
     return None
 
 
-# Return past 12 hours of indoor temperature history
+# Return past 13 hours of indoor temperature history
 def get_temperature_history():
     history = []
     current_time = __get_current_hour_datetime()
-    for hour in range(current_time.hour - 11, current_time.hour + 1):
+    for hour in range(current_time.hour - 12, current_time.hour + 1):
         connection = get_connection()
         cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME, __convert_datetime_to_unix_time(current_time.replace(hour=hour))))
         result = cursor.fetchone()
