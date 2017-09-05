@@ -24,6 +24,10 @@ def __sacle_temperature_for_display(temperature):
     return temperature / 10.0
 
 
+def __get_current_unix_time():
+    return int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds())
+
+
 def get_newest_temperature(connection=None):
     need_to_close_connection = False
     if connection is None:
@@ -40,6 +44,10 @@ def get_newest_temperature(connection=None):
     if result is not None:
         return float(result[1])
     return None
+
+
+def get_temperature_history():
+    pass
 
 
 def get_connection():
@@ -64,7 +72,7 @@ def store_temperature(temperature):
         cursor.execute(open('schema.sql', 'r').read())
         connection.commit()
     
-    command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2})'.format(INDOOR_TEMPERATURE_TABLE_NAME, int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds()), __scale_temperature_for_database(temperature))
+    command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2})'.format(INDOOR_TEMPERATURE_TABLE_NAME, __get_current_unix_time(), __scale_temperature_for_database(temperature))
     print command
     cursor.execute(command)
         

@@ -39,6 +39,11 @@ def get_hourly_forecast():
     return jsonify(forecast=get_weather.get_hourly_forecast())
 
 
+@app.route('/get_hourly_indoor_history')
+def get_hourly_indoor_history():
+    return jsonify(forecast=5)
+
+
 @app.route('/update_temperature', methods=['POST'])
 @auth.login_required
 def update_temperature():
