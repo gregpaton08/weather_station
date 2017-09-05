@@ -50,7 +50,6 @@ def get_hourly_indoor_history():
 def update_temperature():
     if not request.json or not 'temperature' in request.json:
         abort(400)
-    print(request.json)
     thermometer_db.store_temperature(request.json['temperature'])
     return 201
 
