@@ -60,12 +60,18 @@
             data.addColumn('number', 'Outdoor');
 
             // Populate historical indoor temperature data for the chart.
-            // TODO: need an API to pull actual data from the database.
-            // TODO: get the past 12 hours of indoor temperate data when available
             for (var i = 0; i < 12; i++) {
+                // Compute the current hour
+                var hour = forecastData[0]['hour'] - 12 + i;
+
+                // Search the data for the current hour
+                currentTemperature = historyData.find(function(element) {
+                    return element['hour'] == hour;
+                })
+
                 data.addRow([
-                    formatTime(forecastData[0]['hour'] - 12 + i),
-                    convertTemperature(29),
+                    formatTime(hour),
+                    convertTemperature(currentTemperature['temperature']),
                     null
                 ]);
             }
@@ -117,12 +123,12 @@
 
                 updateForecast();
 
-                $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(historyData) {
-                    $.each(historyData.history, function(index, value) {
+                $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
+                    $.each(indoorData.history, function(index, value) {
                         data = {}
                         data['hour'] = value.hour;
                         data['temperature'] = value.temperature;
-                        forecastData.push(data);
+                        historyData.push(data);
                     });
 
                     google.charts.load('current', {'packages':['corechart']});
