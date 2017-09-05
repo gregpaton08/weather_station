@@ -73,6 +73,11 @@ def get_temperature_history():
 
 
 def get_connection():
+    try:
+        open(DATABASE_FILE_NAME, 'r')
+    except IOError:
+        open(DATABASE_FILE_NAME, 'w')
+    
     return sqlite3.connect(DATABASE_FILE_NAME)
 
 
