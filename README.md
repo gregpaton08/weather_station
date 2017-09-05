@@ -39,3 +39,10 @@ heroku config:unset GITHUB_USERNAME
 # change to correct directory
 ./post_temperature.sh
 ```
+
+### Debug
+
+#### Access bash of Heroku working directory
+```
+heroku run bash
+```
