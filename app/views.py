@@ -51,7 +51,7 @@ def update_temperature():
     if not request.json or not 'temperature' in request.json:
         abort(400)
     thermometer_db.store_temperature(request.json['temperature'])
-    return 201
+    return render_template('index.html'), 201
 
 
 @auth.verify_password
