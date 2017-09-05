@@ -64,7 +64,7 @@ def get_temperature_history():
     current_time = __get_current_hour_datetime()
     for hour in range(current_time.hour - 12, current_time.hour):
         connection = get_connection()
-        cursor = connection.execute('SELECT * FROM indoor_temperature order by abs(1504612800 - time) asc limit 1;')
+        cursor = connection.execute('SELECT * FROM {0} order by abs(1504612800 - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME))
         # cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME), __convert_datetime_to_unix_time(current_time.replace(hour=hour)))
         result = cursor.fetchone()
         for item in result:
