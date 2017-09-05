@@ -52,7 +52,7 @@ def update_temperature():
         abort(400)
     print(request.json)
     thermometer_db.store_temperature(request.json['temperature'])
-    return jsonify({ 'key' : 'val' })
+    return 201
 
 
 @auth.verify_password
