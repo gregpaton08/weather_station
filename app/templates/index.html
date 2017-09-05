@@ -12,6 +12,7 @@
         var insideTemperatureC = 0;
         var outsideTemperatureC = 0;
         var forecastData = [];
+        var historyData = [];
 
         function convertCelsiusToFahrenheit(celsius) {
             return Math.round(((celsius * 9.0) / 5.0) + 32.0);
@@ -115,9 +116,19 @@
                 });
 
                 updateForecast();
-            
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
+
+                $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(historyData) {
+                    $.each(historyData.history, function(index, value) {
+                        data = {}
+                        data['hour'] = value.hour;
+                        data['temperature'] = value.temperature;
+                        forecastData.push(data);
+                    });
+
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+                });
+
             });
         }
 
