@@ -33,3 +33,9 @@ heroku config
 # unset a config var
 heroku config:unset GITHUB_USERNAME
 ```
+
+### Run post script every 5 minutes with cron
+```
+# change to correct directory
+./post_temperature.sh
+```
