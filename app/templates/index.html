@@ -69,9 +69,14 @@
                     return element['hour'] == hour;
                 })
 
+                temperature = -10;
+                if (currentTemperature) {
+                    temperature = currentTemperature['temperature'];
+                }
+
                 data.addRow([
                     formatTime(hour),
-                    convertTemperature(currentTemperature['temperature']),
+                    convertTemperature(temperature),
                     null
                 ]);
             }
