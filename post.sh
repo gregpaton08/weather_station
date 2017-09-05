@@ -3,4 +3,4 @@
 temperature="$(./thermometer.py)"
 echo "${temperature}"
 echo '{"temperature":'"${temperature}"'}'
-curl -u gpaton:$(cat api_password.txt) -i -H "Content-Type: application/json" -X POST -d '{"temperature":'"${temperature}"'}' https://murmuring-caverns-91180.herokuapp.com/update_temperature
+curl -u gpaton:$(cat api_password.txt) -i -H "Content-Type: application/json" -X POST -d '{"temperature":'"23"'}' https://murmuring-caverns-91180.herokuapp.com/update_temperature
