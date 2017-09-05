@@ -95,7 +95,6 @@ def store_temperature(temperature):
         connection.commit()
     
     command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2})'.format(INDOOR_TEMPERATURE_TABLE_NAME, __get_current_unix_time(), __scale_temperature_for_database(temperature))
-    print command
     cursor.execute(command)
         
     connection.commit()
