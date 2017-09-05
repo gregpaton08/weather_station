@@ -28,6 +28,18 @@ def __get_current_unix_time():
     return int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds())
 
 
+def __get_nearest_hour_unix_time():
+    time = datetime.utcnow()
+    if time.time.minute >= 30:
+        time.hour = (time.hour + 1) % 24
+    time.time.minute = 0
+    return __convert_datetime_to_unix_time(time)
+
+
+def __convert_datetime_to_unix_time(time):
+    return int((time - datetime(1970, 1, 1)).total_seconds())
+
+
 def get_newest_temperature(connection=None):
     need_to_close_connection = False
     if connection is None:
