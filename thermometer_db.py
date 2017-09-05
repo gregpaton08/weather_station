@@ -28,12 +28,13 @@ def __get_current_unix_time():
     return int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds())
 
 
-def __get_nearest_hour_unix_time():
+# Get the current time rounded to the nearest hour
+def __get_current_hour_datetime():
     time = datetime.utcnow()
-    if time.time.minute >= 30:
-        time.hour = (time.hour + 1) % 24
-    time.time.minute = 0
-    return __convert_datetime_to_unix_time(time)
+    if time.minute >= 30:
+        time.replace(hour = (time.hour + 1) % 24)
+    time = time.replace(minute = 0, second = 0, microsecond = 0)
+    return time
 
 
 def __convert_datetime_to_unix_time(time):
@@ -58,8 +59,17 @@ def get_newest_temperature(connection=None):
     return None
 
 
+# Return past 12 hours of indoor temperature history
 def get_temperature_history():
-    pass
+    current_time = __get_current_hour_datetime()
+    for hour in range(current_time.hour - 12, current_time.hour):
+        connection = get_connection()
+        cursor = connection.execute('SELECT * FROM indoor_temperature order by abs(1504612800 - time) asc limit 1;')
+        # cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME), __convert_datetime_to_unix_time(current_time.replace(hour=hour)))
+        result = cursor.fetchone()
+        for item in result:
+            print(item)
+        connection.close()
 
 
 def get_connection():
