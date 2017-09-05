@@ -25,14 +25,14 @@ def __sacle_temperature_for_display(temperature):
 
 
 def __get_current_unix_time():
-    return int((datetime.utcnow() - datetime(1970, 1, 1)).total_seconds())
+    return int((datetime.now() - datetime(1970, 1, 1)).total_seconds())
 
 
 # Get the current time rounded to the nearest hour
 def __get_current_hour_datetime():
-    time = datetime.utcnow()
+    time = datetime.now()
     if time.minute >= 30:
-        time.replace(hour=(time.hour + 1) % 24)
+        time = time.replace(hour=(time.hour + 1) % 24)
     time = time.replace(minute=0, second=0, microsecond=0)
     return time
 
@@ -63,7 +63,7 @@ def get_newest_temperature(connection=None):
 def get_temperature_history():
     history = []
     current_time = __get_current_hour_datetime()
-    for hour in range(current_time.hour - 12, current_time.hour):
+    for hour in range(current_time.hour - 11, current_time.hour + 1):
         connection = get_connection()
         cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME, __convert_datetime_to_unix_time(current_time.replace(hour=hour))))
         result = cursor.fetchone()
@@ -89,7 +89,7 @@ def store_temperature(temperature):
     connection = get_connection()
     cursor = connection.cursor()
     
-    # Create teh table if it does not exist.
+    # Create the table if it does not exist.
     if not __does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
         cursor.execute(open('schema.sql', 'r').read())
         connection.commit()
