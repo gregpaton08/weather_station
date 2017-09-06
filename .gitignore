@@ -1,5 +1,6 @@
 api_key.txt
 api_password.txt
+log.txt
 *.pyc
 flask
 *.p
