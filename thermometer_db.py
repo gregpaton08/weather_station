@@ -92,6 +92,7 @@ def get_connection():
 
 
 def get_temperature_c(connection=None):
+    print('get_temperature_c')
     need_to_close_connection = False
     if connection is None:
         connection = get_connection()
