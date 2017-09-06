@@ -132,7 +132,9 @@ def store_current_temperature():
 if __name__ == '__main__':
 #    store_current_temperature()
 
-    print get_temperature_c(get_connection())
+    print(DATABASE_FILE_NAME)
+
+    # print get_temperature_c(get_connection())
     
 #    conn = get_connection()
 
