@@ -14,6 +14,7 @@
 * Sotre historical outdoor data in database
 * Graph plot shouldn't move when switching between C and F
 * Consider updating site colors
+* Add option to set location
 
 <img src="invert.png" width="600">
 
