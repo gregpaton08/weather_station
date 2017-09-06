@@ -65,6 +65,13 @@ def get_newest_temperature(connection=None):
 def get_temperature_history():
     history = []
     current_time = __get_current_hour_datetime()
+
+    connection = get_connection()
+    if not __does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
+        connection.close()
+        return []
+    connection.close()
+
     for hour in range(-12, 1):
         time = current_time + timedelta(hours=hour)
         connection = get_connection()
