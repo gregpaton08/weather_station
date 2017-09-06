@@ -23,6 +23,11 @@
 
 [https://murmuring-caverns-91180.herokuapp.com/](https://murmuring-caverns-91180.herokuapp.com/)
 
+### Run locally
+```
+flask/bin/gunicorn run:app
+```
+
 ### Set config var (for API keys)
 
 ```
