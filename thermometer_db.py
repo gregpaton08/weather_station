@@ -3,7 +3,7 @@
 import sqlite3
 import time
 import thermometer
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 DATABASE_FILE_NAME = 'test.db'
@@ -63,11 +63,12 @@ def get_newest_temperature(connection=None):
 def get_temperature_history():
     history = []
     current_time = __get_current_hour_datetime()
-    for hour in range(current_time.hour - 12, current_time.hour + 1):
+    for hour in range(-12, 1):
+        time = current_time + timedelta(hours=hour)
         connection = get_connection()
-        cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME, __convert_datetime_to_unix_time(current_time.replace(hour=hour))))
+        cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME, __convert_datetime_to_unix_time(time)))
         result = cursor.fetchone()
-        history.append({ 'hour' : hour, 'temperature' : (int(result[2]) + 5) / 10 })
+        history.append({ 'hour' : time.hour, 'temperature' : (int(result[2]) + 5) / 10 })
         connection.close()
     return history
 
