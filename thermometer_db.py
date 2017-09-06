@@ -4,9 +4,11 @@ import sqlite3
 import time
 import thermometer
 from datetime import datetime, timedelta
+import os
+from app import app
 
 
-DATABASE_FILE_NAME = 'test.db'
+DATABASE_FILE_NAME = os.path.join(app.root_path, 'test.db')
 INDOOR_TEMPERATURE_TABLE_NAME = 'INDOOR_TEMPERATURE'
 
 
@@ -104,6 +106,8 @@ def store_temperature(temperature):
     cursor.execute(command)
         
     connection.commit()
+
+    connection.close()
 
 
 def store_current_temperature():
