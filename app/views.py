@@ -41,6 +41,7 @@ def get_hourly_forecast():
 
 @app.route('/get_hourly_indoor_history')
 def get_hourly_indoor_history():
+    print('Dir {0}'.format(os.getcwd()))
     thermometer_db.get_temperature_history()
     return jsonify(history=thermometer_db.get_temperature_history())
 
