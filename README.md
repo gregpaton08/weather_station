@@ -4,6 +4,7 @@
 
 ### Open
 * Fix temperature graph displaying negative times
+* Design single API call to get historic indoor and forecast outdoor temperature
 * Display weather icons
 * Display weather warnings
 * Design house icon
