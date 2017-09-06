@@ -22,7 +22,7 @@ def __scale_temperature_for_database(temperature):
     return int(float(temperature) * 10 + 0.5)
 
 
-def __sacle_temperature_for_display(temperature):
+def __scale_temperature_for_display(temperature):
     return temperature / 10.0
 
 
@@ -91,13 +91,20 @@ def get_connection():
     return sqlite3.connect(DATABASE_FILE_NAME)
 
 
-def get_temperature_c(db_connection=None):
-    if db_connection is None:
-        return thermometer.read_temperature_c()
-    db_result = get_newest_temperature(db_connection)
+def get_temperature_c(connection=None):
+    need_to_close_connection = False
+    if connection is None:
+        connection = get_connection()
+        need_to_close_connection = True
+
+    db_result = get_newest_temperature(connection)
     if db_result is None:
-        return thermometer.read_temperature_c()
-    return __sacle_temperature_for_display(db_result)
+        db_result = -1000
+
+    if need_to_close_connection:
+        connection.close()
+
+    return __scale_temperature_for_display(db_result)
 
 
 def store_temperature(temperature):
