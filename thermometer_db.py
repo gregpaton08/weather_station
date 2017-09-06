@@ -140,6 +140,13 @@ if __name__ == '__main__':
 
     print(DATABASE_FILE_NAME)
 
+
+    connection = get_connection()
+    cursor = connection.cursor()
+    for row in cursor.execute('SELECT * FROM {0}'.format(INDOOR_TEMPERATURE_TABLE_NAME)):
+        print(row)
+    connection.close()
+
     # print get_temperature_c(get_connection())
     
 #    conn = get_connection()
