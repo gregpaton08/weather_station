@@ -8,7 +8,12 @@ import os
 from app import app
 
 
-DATABASE_FILE_NAME = os.path.join(app.root_path, 'test.db')
+IS_PRODUCTION = False
+if 'PRODUCTION' in os.environ:
+  IS_PRODUCTION = True
+
+
+DATABASE_FILE_NAME = '/app/app/test.db' if IS_PRODUCTION else os.path.join(app.root_path, 'test.db')
 INDOOR_TEMPERATURE_TABLE_NAME = 'INDOOR_TEMPERATURE'
 
 
