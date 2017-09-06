@@ -135,6 +135,16 @@ def store_current_temperature():
     store_temperature(thermometer.read_temperature_c())
 
 
+def dump_database():
+    connection = get_connection()
+    cursor = connection.cursor()
+    data = []
+    for row in cursor.execute('SELECT * FROM {0}'.format(INDOOR_TEMPERATURE_TABLE_NAME)):
+        data.append(row)
+    connection.close()
+    return data
+
+
 if __name__ == '__main__':
 #    store_current_temperature()
 

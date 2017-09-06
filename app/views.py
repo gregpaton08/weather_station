@@ -55,6 +55,12 @@ def update_temperature():
     return render_template('index.html'), 201
 
 
+@app.route('/dump_database')
+@auth.login_required
+def dump_database():
+    return jsonify(data=thermometer_db.dump_database())
+
+
 @auth.verify_password
 def verify_password(username, password):
     return password == get_api_password()
