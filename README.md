@@ -10,8 +10,9 @@
 * Design outdoor weather icons (sun, clouds, rain, wind, etc.)
 * Make graph interactive (zoom, scroll) like Google finance
 * Mobile site?
-* Consider updating site colors
+* Sotre historical outdoor data in database
 * Graph plot shouldn't move when switching between C and F
+* Consider updating site colors
 
 <img src="invert.png" width="600">
 
