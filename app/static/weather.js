@@ -53,6 +53,9 @@ function drawChart() {
     for (var i = 0; i < 12; i++) {
         // Compute the current hour
         var hour = forecastData[0]['hour'] - 12 + i;
+        while (hour < 0) {
+            hour += 24;
+        }
 
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
