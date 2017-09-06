@@ -80,7 +80,7 @@ function drawChart() {
         current = forecastData[i]
         data.addRow([
             formatTime(parseInt(current['hour'])),
-            i == 0 ? convertTemperature(29) : null,
+            i == 0 ? convertTemperature(historyData[historyData.length - 1]['temperature']) : null,
             convertTemperature(parseInt(current['temperature']))
         ]);
     }
