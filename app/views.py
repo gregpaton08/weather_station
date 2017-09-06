@@ -58,7 +58,7 @@ def update_temperature():
 @app.route('/dump_database')
 @auth.login_required
 def dump_database():
-    return jsonify(data=thermometer_db.dump_database())
+    return jsonify(data='testing')#thermometer_db.dump_database())
 
 
 @auth.verify_password
