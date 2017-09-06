@@ -42,6 +42,10 @@ heroku config
 # unset a config var
 heroku config:unset GITHUB_USERNAME
 ```
+```
+heroku config:set REST_API_PASSWORD=$(cat api_password.txt)
+heroku config:set PRODUCTION=.
+```
 
 ### Run post script every 5 minutes with cron
 ```
