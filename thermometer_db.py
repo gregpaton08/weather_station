@@ -48,7 +48,7 @@ def __get_current_hour_datetime():
     current_time = current_time + timedelta(hours=offset)
 
     if current_time.minute >= 30:
-        current_time = current_time.replace(hour=(time.hour + 1) % 24)
+        current_time = current_time.replace(hour=(current_time.hour + 1) % 24)
     current_time = current_time.replace(minute=0, second=0, microsecond=0)
     return current_time
 
