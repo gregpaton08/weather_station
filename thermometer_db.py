@@ -43,6 +43,7 @@ def __get_current_hour_datetime():
     # compute the timezone offset
     offset = time.altzone if (time.localtime().tm_isdst== 1) else time.timezone
     # set timzeone to eastern standard time
+    # TODO: fix assumption the timezone offset is constant (this will change with daylight savings time)
     est_offset = 4
     offset = (offset / 60 / 60) - est_offset
     current_time = current_time + timedelta(hours=offset)
