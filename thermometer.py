@@ -27,7 +27,7 @@ def read_temperature_c():
     if not os.path.isfile(temp_sensor):
         return -200.0
 
-    __load_drivers()
+    #__load_drivers()
 
     data = __read_sensor()
     while 'YES' not in data[0]:
