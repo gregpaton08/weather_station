@@ -16,6 +16,7 @@
 * Consider updating site colors
 * Add option to set location
 * Split app into client/server in separate repos?
+* Set URL as weather.gregpaton08.com
 
 <img src="invert.png" width="600">
 
