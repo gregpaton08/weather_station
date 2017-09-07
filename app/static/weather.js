@@ -6,6 +6,7 @@ var historyData = [];
 
 function convertCelsiusToFahrenheit(celsius) {
     var fahrenheit = ((celsius * 9.0) / 5.0) + 32.0;
+    // Round to one decimal place.
     return Math.round(fahrenheit * 10) / 10;
 }
 
