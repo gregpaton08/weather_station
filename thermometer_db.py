@@ -25,11 +25,11 @@ def __does_table_exist(connection, table_name):
 
 
 def __scale_temperature_for_database(temperature):
-    return int(float(temperature) * 10 + 0.5)
+    return int(float(temperature) * 10)
 
 
 def __scale_temperature_for_display(temperature):
-    return temperature / 10.0
+    return (temperature + 5) / 10.0
 
 
 def __get_current_unix_time():
