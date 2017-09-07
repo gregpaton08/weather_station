@@ -72,6 +72,8 @@ def get_temperature_history():
     history = []
     current_time = __get_current_hour_datetime()
 
+    print('current time: {0}'.format(current_time))
+
     connection = get_connection()
     if not __does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
         connection.close()
