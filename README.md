@@ -15,6 +15,7 @@
 * Graph plot shouldn't move when switching between C and F
 * Consider updating site colors
 * Add option to set location
+* Split app into client/server in separate repos?
 
 <img src="invert.png" width="600">
 
