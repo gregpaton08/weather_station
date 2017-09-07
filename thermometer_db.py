@@ -28,7 +28,7 @@ def __scale_temperature_for_database(temperature):
 
 
 def __scale_temperature_for_display(temperature):
-    return (temperature + 5) / 10.0
+    return temperature / 10.0
 
 
 def __get_current_unix_time():
