@@ -13,8 +13,7 @@ if 'PRODUCTION' in os.environ:
   IS_PRODUCTION = True
 
 
-DATABASE_FILE_NAME = '/app/test.db' #if IS_PRODUCTION else os.path.join(app.root_path, 'test.db')
-# DATABASE_FILE_NAME = '/app/app/test.db' if IS_PRODUCTION else os.path.join(app.root_path, 'test.db')
+DATABASE_FILE_NAME = os.path.join(app.root_path, 'test.db')
 INDOOR_TEMPERATURE_TABLE_NAME = 'INDOOR_TEMPERATURE'
 
 
@@ -94,7 +93,7 @@ def get_temperature_history():
         connection = get_connection()
         cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME, __convert_datetime_to_unix_time(time)))
         result = cursor.fetchone()
-        history.append({ 'hour' : time.hour, 'temperature' : (int(result[2]) + 5) / 10 })
+        history.append({ 'hour' : time.hour, 'temperature' : __scale_temperature_for_display(int(result[2])) })
         connection.close()
     return history
 
