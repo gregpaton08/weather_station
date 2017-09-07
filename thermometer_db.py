@@ -6,6 +6,7 @@ import thermometer
 from datetime import datetime, timedelta
 import os
 from app import app
+import time
 
 
 IS_PRODUCTION = False
@@ -39,6 +40,14 @@ def __get_current_unix_time():
 # Get the current time rounded to the nearest hour
 def __get_current_hour_datetime():
     time = datetime.now()
+
+    # compute the timezone offset
+    offset = time.altzone if (time.localtime().tm_isdst== 1) else time.timezone
+    # set timzeone to eastern standard time
+    est_offset = 4
+    offset = (offset / 60 / 60) - est_offset
+    time = time + timedelta(hours=offset)
+
     if time.minute >= 30:
         time = time.replace(hour=(time.hour + 1) % 24)
     time = time.replace(minute=0, second=0, microsecond=0)
