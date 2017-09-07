@@ -65,6 +65,8 @@ function drawChart() {
         temperature = -10;
         if (currentTemperature) {
             temperature = currentTemperature['temperature'];
+        } else {
+            console.log('No indoor temperature for hour ' + hour)
         }
 
         data.addRow([
