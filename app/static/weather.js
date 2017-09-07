@@ -5,7 +5,8 @@ var forecastData = [];
 var historyData = [];
 
 function convertCelsiusToFahrenheit(celsius) {
-    return Math.round(((celsius * 9.0) / 5.0) + 32.0);
+    var fahrenheit = ((celsius * 9.0) / 5.0) + 32.0;
+    return Math.round(fahrenheit * 10) / 10;
 }
 
 function convertTemperature(temperature) {
@@ -29,8 +30,8 @@ function formatTime(hour) {
 }
 
 function updateTemperature() {
-    $('#insidetemp').text(convertTemperature(insideTemperatureC));
-    $('#outsidetemp').text(convertTemperature(outsideTemperatureC));
+    $('#insidetemp').text(Math.round(convertTemperature(insideTemperatureC)));
+    $('#outsidetemp').text(Math.round(convertTemperature(outsideTemperatureC)));
 }
 
 function updateForecast() {
