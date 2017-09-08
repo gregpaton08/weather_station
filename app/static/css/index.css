@@ -9,32 +9,6 @@
     color: #888;
 }
 
-#hourly_forecast {
-    margin-left:100px;
-    padding: 10px;
-    font-family: arial;
-    text-align: center;
-}
-
-#hourly_forecast table {
-    table-layout: fixed;
-    width: 800px;
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
-}
-
-#hourly_forecast td {
-    text-align: center;
-}
-
-#hourly_forecast .time {
-    line-height: 2;
-}
-
-#hourly_forecast .temperature {
-    line-height: 2;
-}
-
 .indoor-temperature {
     position: relative;
     /*width: 100%;*/
