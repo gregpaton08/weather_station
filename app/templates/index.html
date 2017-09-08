@@ -10,12 +10,20 @@
     <script type=text/javascript src="{{ url_for('static', filename='weather.js') }}"></script>
     <div id="temp_type"><a href="#">c&deg;</a>|f&deg;</div>
     <div class="center">
-        <span class="intemp">
-            <!-- <img src="static/home.png" height="50" width="50"> -->
-            <span id="insidetemp"></span>&deg;
-        </span>
-        <span class="outtemp">
-            <span id="outsidetemp"></span>&deg;
+        <div class="indoor-temperature">
+            <img class="house-icon" src="static/house.png">
+            <!-- <span class="intemp"> -->
+                <!-- <img src="static/home.png" height="50" width="50"> -->
+                <span class="indoor-temp-display" width="400">
+                    <span id="insidetemp"></span>&deg;
+                </span>
+            <!-- </span> -->
+        </div>
+        <div class="indoor-temperature">
+            <span class="indoor-temp-display" width="400">
+                <span id="outsidetemp"></span>&deg;
+            </span>
+
 <!--             {% if condition == "overcast" %}
             <img src="/static/overcast.png" height="64" width="64">
             {% elif condition == "fog" %}
@@ -25,7 +33,7 @@
             {% else %}
             and {{ condition }}
             {% endif %} -->
-        </span>
+        </div>
         <br/>
     </div>
     <div id="hourly_forecast">

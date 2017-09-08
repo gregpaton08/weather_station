@@ -1,6 +1,6 @@
 .center {
     margin-left: 250px;
-    width: 500px;
+    width: 800px;
     padding: 10px;
     /*background-color: #CCC;*/
     font-family: arial;
@@ -33,6 +33,23 @@
 
 #hourly_forecast .temperature {
     line-height: 2;
+}
+
+.indoor-temperature {
+    position: relative;
+    /*width: 100%;*/
+    float: left;
+}
+
+.house-icon {
+    opacity: .47;
+}
+
+.indoor-temp-display {
+    position: absolute;
+    top: 100px;
+    left: 17px;
+    width: 100%;
 }
 
 .intemp {
