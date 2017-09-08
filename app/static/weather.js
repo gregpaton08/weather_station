@@ -35,16 +35,6 @@ function updateTemperature() {
     $('#outsidetemp').text(Math.round(convertTemperature(outsideTemperatureC)));
 }
 
-function updateForecast() {
-    $html = '';
-    $.each(forecastData, function(index, value) {
-        $html += '<td><div class="time">' + formatTime(value.hour) + '</div><div class="temperature">' + String(convertTemperature(value.temperature)) + '&deg;</div></td>';
-
-        return index < 12;
-    });
-    $('#hourly_forecast tr').html($html).show();
-}
-
 function drawChart() {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Time');
@@ -122,8 +112,6 @@ function updateData() {
             data['condition'] = value.condition;
             forecastData.push(data);
         });
-
-        updateForecast();
 
         $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
             $.each(indoorData.history, function(index, value) {

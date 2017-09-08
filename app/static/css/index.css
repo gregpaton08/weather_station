@@ -71,6 +71,7 @@
 }
 
 #curve_chart {
+    float: left;
     margin-left:100px;
     width: 800px;
     height: 400px;
