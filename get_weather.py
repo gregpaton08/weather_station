@@ -91,7 +91,7 @@ def get_hourly_weather():
                 'day' : x['FCTTIME']['mday'],
                 'hour' : x['FCTTIME']['hour'],
                 'minute' : x['FCTTIME']['min'],
-                'temp' : x['temp']['english']
+                'temp' : x['temp']['metric']
               } for x in data]
     return data + get_hourly_history()
 
