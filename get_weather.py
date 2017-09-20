@@ -67,6 +67,7 @@ def get_hourly_history():
 
     # Filter data down to date and temperature.
     data = weather_data.get('history', []).get('observations', [])
+    # TODO: convert year, month, day, hour, minute into UTC time code
     data = [ {
                 'year' : x['date']['year'],
                 'month' : x['date']['mon'],
