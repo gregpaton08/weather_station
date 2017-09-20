@@ -3,6 +3,7 @@ var insideTemperatureC = 0;
 var outsideTemperatureC = 0;
 var forecastData = [];
 var historyData = [];
+var currentHour = 0;
 
 function convertCelsiusToFahrenheit(celsius) {
     var fahrenheit = ((celsius * 9.0) / 5.0) + 32.0;
@@ -43,11 +44,7 @@ function drawChart() {
 
     // Populate historical indoor temperature data for the chart.
     for (var i = 0; i < 12; i++) {
-        // Compute the current hour
-        var hour = forecastData[0]['hour'] - 12 + i;
-        while (hour < 0) {
-            hour += 24;
-        }
+        var hour = currentHour;
 
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
@@ -104,40 +101,27 @@ function updateData() {
         updateTemperature();
     });
 
-    // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
-    //     $.each(data.forecast, function(index, value) {
-    //         data = {}
-    //         data['hour'] = value.FCTTIME.hour;
-    //         data['temperature'] = value.temp.metric;
-    //         data['condition'] = value.condition;
-    //         forecastData.push(data);
-    //     });
-
-    //     $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
-    //         $.each(indoorData.history, function(index, value) {
-    //             data = {}
-    //             data['hour'] = value.hour;
-    //             data['temperature'] = value.temperature;
-    //             historyData.push(data);
-    //         });
-
-    //         google.charts.load('current', {'packages':['corechart']});
-    //         google.charts.setOnLoadCallback(drawChart);
-    //     });
-
-    // });
-
     $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
-        $.each(data.forecast, function(index, value) {
-            data = {}
-            data['hour'] = value.hour;
-            data['temperature'] = value.temp;
-            // data['condition'] = value.condition;
-            forecastData.push(data);
+        currentHour = data.current_time.hour;
+        $.each(data.weather, function(index, value) {
+            weatherData = {}
+            weatherData['hour'] = value.hour;
+            weatherData['temperature'] = value.temp;
+            forecastData.push(weatherData);
         });
 
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+
+        $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
+            $.each(indoorData.history, function(index, value) {
+                indoorData = {}
+                indoorData['hour'] = value.hour;
+                indoorData['temperature'] = value.temperature;
+                historyData.push(indoorData);
+            });
+
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+        });
 
     });
 }
