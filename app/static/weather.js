@@ -92,12 +92,11 @@ function drawChart() {
     }
 
     var options = {
-        // title: 'Company Performance',
         curveType: 'function',
         legend: { position: 'bottom' },
         chartArea: { left: 20, top: 10, width: '100%', height: '80%' },
         vAxis: { gridlines: { color: '#DDD', count: 3 }},
-        // vAxis: { minorGridlines: { count: 1 }},
+        vAxis: { minorGridlines: { count: 0 }},
         hAxis: { showTextEvery: 3 }
     };
 
