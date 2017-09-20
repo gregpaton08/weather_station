@@ -74,21 +74,16 @@ function drawChart() {
 
         currentDate.setHours(currentDate.getHours() - 12 + i);
 
-        var hour = currentTime.hour - 12 + i;
-        while (hour < 0) {
-            hour += 24
-        }
-
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
-            return element['hour'] == hour;
+            return element['hour'] == currentDate.getHours();
         })
 
         temperature = -10;
         if (currentTemperature) {
             temperature = currentTemperature['temperature'];
         } else {
-            console.log('No indoor temperature for hour ' + hour)
+            console.log('No indoor temperature for hour ' + currentDate);
         }
 
         // TODO: fix this logic. The hour key is not unique, need to check what day it is.
@@ -100,13 +95,13 @@ function drawChart() {
         })
 
         if (outdoorTemperature) {
-            outdoorTemperature = outdoorTemperature['temperature']
+            outdoorTemperature = outdoorTemperature['temperature'];
         } else {
-            console.log('No outdoor temperature for hour ' + currentDate)
+            console.log('No outdoor temperature for hour ' + currentDate);
         }
 
         data.addRow([
-            formatTime(hour),
+            formatTime(currentDate.getHours()),
             convertTemperature(temperature),
             convertTemperature(outdoorTemperature)
         ]);
