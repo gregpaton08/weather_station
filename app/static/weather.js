@@ -61,6 +61,7 @@ function drawChart() {
             console.log('No indoor temperature for hour ' + hour)
         }
 
+        // TODO: fix this logic. The hour key is not unique, need to check what day it is.
         outdoorTemperature = forecastData.find(function(element) {
             console.log('element ' + element['hour'])
             return element['hour'] == hour;
