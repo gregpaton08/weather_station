@@ -44,7 +44,10 @@ function drawChart() {
 
     // Populate historical indoor temperature data for the chart.
     for (var i = 0; i < 12; i++) {
-        var hour = currentTime.hour;
+        var hour = currentTime.hour - 12 + i;
+        while (hour < 0) {
+            hour += 24
+        }
 
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
@@ -58,10 +61,21 @@ function drawChart() {
             console.log('No indoor temperature for hour ' + hour)
         }
 
+        outdoorTemperature = forecastData.find(function(element) {
+            console.log('element ' + element['hour'])
+            return element['hour'] == hour;
+        })
+
+        if (outdoorTemperature) {
+            outdoorTemperature = outdoorTemperature['temperature']
+        } else {
+            console.log('No outdoor temperature for hour ' + hour)
+        }
+
         data.addRow([
             formatTime(hour),
             convertTemperature(temperature),
-            null
+            convertTemperature(outdoorTemperature)
         ]);
     }
 
