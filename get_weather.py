@@ -79,7 +79,7 @@ def get_hourly_history():
     return data
 
 
-def get_hourly():
+def get_hourly_weather():
     data = get_hourly_forecast()
     data = [ { 
                 'year' : x['FCTTIME']['year'],
@@ -89,7 +89,7 @@ def get_hourly():
                 'minute' : x['FCTTIME']['min'],
                 'temp' : x['temp']['english']
               } for x in data]
-    return data
+    return data + get_hourly_history()
 
 
 def __get_astronomy_data():
@@ -108,7 +108,7 @@ def get_sunset():
 
 
 if __name__ == '__main__':
-    data = get_hourly()
+    data = get_hourly_weather()
     # data = get_hourly_history()
     # print(data)
     for item in data:

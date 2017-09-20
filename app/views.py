@@ -39,6 +39,11 @@ def get_hourly_forecast():
     return jsonify(forecast=get_weather.get_hourly_forecast())
 
 
+@app.route('/get_hourly_weather')
+def get_hourly_weather():
+    return jsonify(weather=get_weather.get_hourly_weather())
+
+
 @app.route('/get_hourly_indoor_history')
 def get_hourly_indoor_history():
     print('Dir {0}'.format(os.getcwd()))
