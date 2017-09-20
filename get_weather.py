@@ -76,7 +76,7 @@ def get_sunset():
 
 
 if __name__ == '__main__':
-    print(get_temperature())
+    print(get_temperature_c())
 
     data = get_hourly_forecast()
     for item in data:

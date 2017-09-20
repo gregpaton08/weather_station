@@ -6,6 +6,8 @@ Example:
     http://api.wunderground.com/api/<API KEY>/forecast/q/NJ/Collingswood.json
     # for sunrise/sunset
     http://api.wunderground.com/api/<API KEY>/astronomy/q/NJ/Collingswood.json
+    # for historical data
+    http://api.wunderground.com/api/<API KEY>/history_20170919/q/NJ/Collingswood.json
 
 Current Task:
 
