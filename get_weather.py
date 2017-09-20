@@ -4,6 +4,7 @@ import urllib2
 import json
 import apicache
 import os
+import local_time
 
 '''
 Module to get weather data from the Weather Underground API.
@@ -62,7 +63,7 @@ def get_hourly_forecast(num_hours=-1):
 
 def get_hourly_history():
     # TODO: fix hard coded date
-    url_path = '/history_20170919/q/' + API_URL_LOCATION
+    url_path = '/history_' + local_time.get_est_time().strftime('%Y%m%d') + '/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
 
     # Filter data down to date and temperature.
