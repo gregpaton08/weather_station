@@ -63,8 +63,9 @@ def get_hourly_forecast(num_hours=-1):
 def get_hourly_history():
     url_path = '/history_20170919/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
-    data = weather_data.get('history', []).get('observations', [])
 
+    # Filter data down to date and temperature.
+    data = weather_data.get('history', []).get('observations', [])
     data = [ { 'date' : x['date'], 'temp' : x['tempm']} for x in data]
     return data
 
