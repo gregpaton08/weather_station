@@ -60,6 +60,15 @@ def get_hourly_forecast(num_hours=-1):
     return weather_data.get('hourly_forecast', [])[:num_hours]
 
 
+def get_hourly_history():
+    url_path = '/history_20170919/q/' + API_URL_LOCATION
+    weather_data = __get_data_for_url_path(url_path)
+    data = weather_data.get('history', []).get('observations', [])
+
+    data = [ { 'date' : x['date'], 'temp' : x['tempm']} for x in data]
+    return data
+
+
 def __get_astronomy_data():
     url_path = '/astronomy/q/' + API_URL_LOCATION
     return __get_data_for_url_path(url_path)
@@ -76,8 +85,12 @@ def get_sunset():
 
 
 if __name__ == '__main__':
-    print(get_temperature_c())
-
-    data = get_hourly_forecast()
+    data = get_hourly_history()
+    # print(data)
     for item in data:
-        print(item['FCTTIME']['hour'], item['temp']['english'], item['condition'])
+        print(item)
+    # print(get_temperature_c())
+
+    # data = get_hourly_forecast()
+    # for item in data:
+    #     print(item['FCTTIME']['hour'], item['temp']['english'], item['condition'])
