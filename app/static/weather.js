@@ -3,7 +3,7 @@ var insideTemperatureC = 0;
 var outsideTemperatureC = 0;
 var forecastData = [];
 var historyData = [];
-var currentHour = 0;
+var currentTime;
 
 function convertCelsiusToFahrenheit(celsius) {
     var fahrenheit = ((celsius * 9.0) / 5.0) + 32.0;
@@ -44,7 +44,7 @@ function drawChart() {
 
     // Populate historical indoor temperature data for the chart.
     for (var i = 0; i < 12; i++) {
-        var hour = currentHour;
+        var hour = currentTime.hour;
 
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
@@ -102,7 +102,9 @@ function updateData() {
     });
 
     $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
-        currentHour = data.current_time.hour;
+
+        currentTime = data.current_time;
+
         $.each(data.weather, function(index, value) {
             weatherData = {}
             weatherData['hour'] = value.hour;
