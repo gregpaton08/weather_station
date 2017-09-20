@@ -104,26 +104,40 @@ function updateData() {
         updateTemperature();
     });
 
-    $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
+    // $.getJSON($SCRIPT_ROOT + '/get_hourly_forecast', {}, function(data) {
+    //     $.each(data.forecast, function(index, value) {
+    //         data = {}
+    //         data['hour'] = value.FCTTIME.hour;
+    //         data['temperature'] = value.temp.metric;
+    //         data['condition'] = value.condition;
+    //         forecastData.push(data);
+    //     });
+
+    //     $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
+    //         $.each(indoorData.history, function(index, value) {
+    //             data = {}
+    //             data['hour'] = value.hour;
+    //             data['temperature'] = value.temperature;
+    //             historyData.push(data);
+    //         });
+
+    //         google.charts.load('current', {'packages':['corechart']});
+    //         google.charts.setOnLoadCallback(drawChart);
+    //     });
+
+    // });
+
+    $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
         $.each(data.forecast, function(index, value) {
             data = {}
-            data['hour'] = value.FCTTIME.hour;
-            data['temperature'] = value.temp.metric;
-            data['condition'] = value.condition;
+            data['hour'] = value.hour;
+            data['temperature'] = value.temp;
+            // data['condition'] = value.condition;
             forecastData.push(data);
         });
 
-        $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
-            $.each(indoorData.history, function(index, value) {
-                data = {}
-                data['hour'] = value.hour;
-                data['temperature'] = value.temperature;
-                historyData.push(data);
-            });
-
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-        });
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
     });
 }

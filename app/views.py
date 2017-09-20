@@ -5,6 +5,7 @@ import thermometer
 import thermometer_db
 from flask_httpauth import HTTPBasicAuth
 import os
+import local_time
 
 auth = HTTPBasicAuth()
 
@@ -41,7 +42,7 @@ def get_hourly_forecast():
 
 @app.route('/get_hourly_weather')
 def get_hourly_weather():
-    return jsonify(weather=get_weather.get_hourly_weather())
+    return jsonify(current_time=local_time.get_est_time_dict(), weather=get_weather.get_hourly_weather())
 
 
 @app.route('/get_hourly_indoor_history')
