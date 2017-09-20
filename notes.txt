@@ -8,6 +8,8 @@ Example:
     http://api.wunderground.com/api/<API KEY>/astronomy/q/NJ/Collingswood.json
     # for historical data
     http://api.wunderground.com/api/<API KEY>/history_20170919/q/NJ/Collingswood.json
+    # combine api requests
+    http://api.wunderground.com/api/<API KEY>/hourly/history_20170919/q/NJ/Collingswood.json
 
 Current Task:
 

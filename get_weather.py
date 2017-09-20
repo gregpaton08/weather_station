@@ -61,12 +61,33 @@ def get_hourly_forecast(num_hours=-1):
 
 
 def get_hourly_history():
+    # TODO: fix hard coded date
     url_path = '/history_20170919/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
 
     # Filter data down to date and temperature.
     data = weather_data.get('history', []).get('observations', [])
-    data = [ { 'date' : x['date'], 'temp' : x['tempm']} for x in data]
+    data = [ {
+                'year' : x['date']['year'],
+                'month' : x['date']['mon'],
+                'day' : x['date']['mday'],
+                'hour' : x['date']['hour'],
+                'minute' : x['date']['min'],
+                'temp' : x['tempm']
+              } for x in data]
+    return data
+
+
+def get_hourly():
+    data = get_hourly_forecast()
+    data = [ { 
+                'year' : x['FCTTIME']['year'],
+                'month' : x['FCTTIME']['mon'],
+                'day' : x['FCTTIME']['mday'],
+                'hour' : x['FCTTIME']['hour'],
+                'minute' : x['FCTTIME']['min'],
+                'temp' : x['temp']['english']
+              } for x in data]
     return data
 
 
@@ -86,8 +107,15 @@ def get_sunset():
 
 
 if __name__ == '__main__':
-    data = get_hourly_history()
+    data = get_hourly()
+    # data = get_hourly_history()
     # print(data)
+    for item in data:
+        print(item)
+
+    print('===========')
+
+    data = get_hourly_history()
     for item in data:
         print(item)
     # print(get_temperature_c())
