@@ -43,3 +43,7 @@ Done:
 * Cache the weather results with a timestamp to limit number of API calls
     * Display the time it was last updated
     * Add an option to force refresh? <-- NO
+
+
+Stretch goals:
+* machine learning to predict future indoor temperature
