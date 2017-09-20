@@ -64,8 +64,16 @@ function drawChart() {
     data.addColumn('number', 'Indoor');
     data.addColumn('number', 'Outdoor');
 
+    var newDate = new Date(2017, 8, 20, 11);
+    newDate.setHours(newDate.getHours() - 12)
+    console.log(newDate)
+
     // Populate historical indoor temperature data for the chart.
+    var currentDate = new Date(currentTime.year, currentTime.month - 1, currentTime.day, currentTime.hour);
     for (var i = 0; i < 12; i++) {
+
+        currentDate.setHours(currentDate.getHours() - 12 + i);
+
         var hour = currentTime.hour - 12 + i;
         while (hour < 0) {
             hour += 24
@@ -85,14 +93,16 @@ function drawChart() {
 
         // TODO: fix this logic. The hour key is not unique, need to check what day it is.
         outdoorTemperature = forecastData.find(function(element) {
-            console.log('element ' + element['hour'])
-            return element['hour'] == hour;
+            return element['year'] == currentDate.getYear() &&
+                   element['month'] - 1 == currentDate.getMonth() &&
+                   element['day'] == currentDate.getDate() &&
+                   element['hour'] == currentDate.getHours();
         })
 
         if (outdoorTemperature) {
             outdoorTemperature = outdoorTemperature['temperature']
         } else {
-            console.log('No outdoor temperature for hour ' + hour)
+            console.log('No outdoor temperature for hour ' + currentDate)
         }
 
         data.addRow([
