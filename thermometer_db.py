@@ -88,7 +88,7 @@ def get_temperature_history():
         return []
     connection.close()
 
-    for hour in range(-12, 1):
+    for hour in range(-13, 1):
         time = current_time + timedelta(hours=hour)
         connection = get_connection()
         cursor = connection.execute('SELECT * FROM {0} order by abs({1} - time) asc limit 1;'.format(INDOOR_TEMPERATURE_TABLE_NAME, __convert_datetime_to_unix_time(time)))
