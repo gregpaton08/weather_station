@@ -80,7 +80,6 @@ function drawChart() {
                    parseInt(element['month']) == currentDate.getMonth() + 1 &&
                    parseInt(element['day']) == currentDate.getDate() &&
                    parseInt(element['hour']) == currentDate.getHours();
-            // return element['hour'] == currentDate.getHours();
         })
 
         var temperature = null;

@@ -98,6 +98,13 @@ def get_hourly_weather():
                 'minute' : x['FCTTIME']['min'],
                 'temp' : x['temp']['metric']
               } for x in data]
+
+    # Add in the current temperature.
+    current_time_and_temp = local_time.get_est_time_dict()
+    current_time_and_temp['temp'] = get_temperature_c() 
+    data.append(current_time_and_temp)
+    print(current_time_and_temp)
+
     return data + get_hourly_history()
 
 
