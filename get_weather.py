@@ -103,7 +103,10 @@ def get_hourly_weather():
     current_time_and_temp = local_time.get_est_time_dict()
     current_time_and_temp['temp'] = get_temperature_c() 
     data.append(current_time_and_temp)
-    print(current_time_and_temp)
+
+    previous_hour_time_and_temp = local_time.datetime_to_dict(local_time.get_est_time() - datetime.timedelta(hours=1))
+    previous_hour_time_and_temp['temp'] = get_temperature_c()
+    data.append(previous_hour_time_and_temp)
 
     return data + get_hourly_history()
 
