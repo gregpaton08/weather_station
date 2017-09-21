@@ -64,13 +64,18 @@ def get_hourly_forecast(num_hours=-1):
 
 def get_hourly_history():
     current_time = local_time.get_est_time()
-    url_path = '/history_' + local_time.get_est_time().strftime('%Y%m%d')
-    url_path = url_path + '/history_' + (current_time - datetime.timedelta(days=1)).strftime('%Y%m%d')
-    url_path = url_path + '/q/' + API_URL_LOCATION
-    weather_data = __get_data_for_url_path(url_path)
 
+    # Combining API calls resulted in missing data, so split into two requests.
+    url_path = '/history_' + (current_time - datetime.timedelta(days=1)).strftime('%Y%m%d') + '/q/' + API_URL_LOCATION
+    weather_data = __get_data_for_url_path(url_path)
     # Filter data down to date and temperature.
     data = weather_data.get('history', []).get('observations', [])
+
+    url_path = '/history_' + local_time.get_est_time().strftime('%Y%m%d') + '/q/' + API_URL_LOCATION
+    weather_data = __get_data_for_url_path(url_path)
+    # Filter data down to date and temperature.
+    data += weather_data.get('history', []).get('observations', [])
+
     # TODO: convert year, month, day, hour, minute into UTC time code
     data = [ {
                 'year' : x['date']['year'],
