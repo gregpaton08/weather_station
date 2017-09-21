@@ -21,6 +21,7 @@ To do:
     * Sun (or clouds or current weather) alongside outdoor temp
 * Consolidate AJAX data request into a single request (instead of separate requests for indoor/outdoor temperature)
 * Update C/F link in callback so that it is in sync with the data displayed
+* Javascript date ojbect to/from JSON?
 
 
 Done:
