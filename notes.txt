@@ -14,24 +14,23 @@ Example:
 Current Task:
 
 To do:
-* Track indoor/outdoor temperature once every hour (register cron job or python process?)
-* Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
+* List the weather forecast (sunny, partly cloudy, rain, etc.) in plain text on graph.
 * Design the interface
     * House graphic containing indoor temp
     * Design graphics in Sketch
     * Sun (or clouds or current weather) alongside outdoor temp
-* List out the day's (hour by hour) forecast
-* List out the week's (day by day) forecast
-* Add historical data (data base to store inside temp?)
-    * Run background process on RPi (chron) to update database with indoor temperature every 10 minutes
-    * Access database in flask app http://flask.pocoo.org/docs/0.12/tutorial/schema/
-* Graph inside temp
-* Graph forecast for outside
 * Consolidate AJAX data request into a single request (instead of separate requests for indoor/outdoor temperature)
 * Update C/F link in callback so that it is in sync with the data displayed
 
 
 Done:
+* Add historical data (data base to store inside temp?)
+    * Run background process on RPi (chron) to update database with indoor temperature every 10 minutes
+    * Access database in flask app http://flask.pocoo.org/docs/0.12/tutorial/schema/
+* Graph inside temp
+* Graph forecast for outside
+* Set up subdomain of gregpaton08.com to point to RPi (use A Record and noip.com)
+* Track indoor/outdoor temperature once every hour (register cron job or python process?)
 * Setup Flask server for app
 * parse JSON for temperature data
 * hook up thermometer to RPi
