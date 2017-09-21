@@ -12,6 +12,10 @@ function convertCelsiusToFahrenheit(celsius) {
 }
 
 function convertTemperature(temperature) {
+    if (temperature == null) {
+        return null;
+    }
+
     if (displayTemperatureInFahrenheit) {
         return convertCelsiusToFahrenheit(temperature);
     } else {
@@ -64,40 +68,35 @@ function drawChart() {
     data.addColumn('number', 'Indoor');
     data.addColumn('number', 'Outdoor');
 
-    var newDate = new Date(2017, 8, 20, 11);
-    newDate.setHours(newDate.getHours() - 12)
-    console.log(newDate)
-
     // Populate historical indoor temperature data for the chart.
-    var currentDate = new Date(currentTime.year, currentTime.month - 1, currentTime.day, currentTime.hour);
-    for (var i = 0; i < 12; i++) {
-
-        currentDate.setHours(currentDate.getHours() - 12 + i);
+    var previousHours = 12;
+    var currentDate = new Date(parseInt(currentTime.year), currentTime.month - 1, currentTime.day, currentTime.hour - previousHours);
+    var arrayLength = Math.min(forecastData.length, 12);
+    for (var i = -previousHours; i < arrayLength; i++) {
 
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
             return element['hour'] == currentDate.getHours();
         })
 
-        temperature = -10;
+        var temperature = null;
         if (currentTemperature) {
             temperature = currentTemperature['temperature'];
         } else {
             console.log('No indoor temperature for hour ' + currentDate);
         }
 
-        // TODO: fix this logic. The hour key is not unique, need to check what day it is.
         outdoorTemperature = forecastData.find(function(element) {
-            return element['year'] == currentDate.getYear() &&
-                   element['month'] - 1 == currentDate.getMonth() &&
-                   element['day'] == currentDate.getDate() &&
-                   element['hour'] == currentDate.getHours();
+            return parseInt(element['year']) == currentDate.getFullYear() &&
+                   parseInt(element['month']) == currentDate.getMonth() + 1 &&
+                   parseInt(element['day']) == currentDate.getDate() &&
+                   parseInt(element['hour']) == currentDate.getHours();
         })
 
         if (outdoorTemperature) {
             outdoorTemperature = outdoorTemperature['temperature'];
         } else {
-            console.log('No outdoor temperature for hour ' + currentDate);
+            console.log('No outdoor temperature for ' + currentDate);
         }
 
         data.addRow([
@@ -105,17 +104,8 @@ function drawChart() {
             convertTemperature(temperature),
             convertTemperature(outdoorTemperature)
         ]);
-    }
 
-    // Populate outdoor temperature forecast data for the chart. Note the two plots overlap so the for i == 0 the current indoor temperature is plotted.
-    var arrayLength = Math.min(forecastData.length, 12);
-    for (var i = 0; i < arrayLength; i++) {
-        current = forecastData[i]
-        data.addRow([
-            formatTime(parseInt(current['hour'])),
-            i == 0 ? convertTemperature(historyData[historyData.length - 1]['temperature']) : null,
-            convertTemperature(parseInt(current['temperature']))
-        ]);
+        currentDate.setHours(currentDate.getHours() + 1);
     }
 
     var options = {
@@ -148,6 +138,9 @@ function updateData() {
 
         $.each(data.weather, function(index, value) {
             weatherData = {}
+            weatherData['year'] = value.year
+            weatherData['month'] = value.month
+            weatherData['day'] = value.day
             weatherData['hour'] = value.hour;
             weatherData['temperature'] = value.temp;
             forecastData.push(weatherData);
@@ -157,6 +150,9 @@ function updateData() {
         $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
             $.each(indoorData.history, function(index, value) {
                 indoorData = {}
+                indoorData['year'] = value.year
+                indoorData['month'] = value.month
+                indoorData['day'] = value.day
                 indoorData['hour'] = value.hour;
                 indoorData['temperature'] = value.temperature;
                 historyData.push(indoorData);
