@@ -12,11 +12,7 @@ auth = HTTPBasicAuth()
 @app.route('/')
 @app.route('/index')
 def index():
-    # get forecast for next 12 hours
-    hourly_forecast = get_weather.get_hourly_forecast(12)
-    return render_template('index.html',
-                           condition=get_weather.get_condition().lower(),
-                           hourly=hourly_forecast)
+    return render_template('index.html')
 
 
 @app.route('/get_temperature_data_c')
