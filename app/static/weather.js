@@ -76,7 +76,11 @@ function drawChart() {
 
         // Search the data for the current hour
         currentTemperature = historyData.find(function(element) {
-            return element['hour'] == currentDate.getHours();
+            return parseInt(element['year']) == currentDate.getFullYear() &&
+                   parseInt(element['month']) == currentDate.getMonth() + 1 &&
+                   parseInt(element['day']) == currentDate.getDate() &&
+                   parseInt(element['hour']) == currentDate.getHours();
+            // return element['hour'] == currentDate.getHours();
         })
 
         var temperature = null;
