@@ -3,6 +3,7 @@
 ## To Do
 
 ### Open
+* API throttling to prevent malicious attacks (?)
 * Fix temperature graph displaying negative times
 * Design single API call to get historic indoor and forecast outdoor temperature
 * Display weather icons
