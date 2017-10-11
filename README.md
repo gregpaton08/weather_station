@@ -3,7 +3,7 @@
 ## To Do
 
 ### Open
-* API throttling to prevent malicious attacks (?)
+* API throttling to prevent malicious attacks (?). Anything built in to Flask?
 * Fix temperature graph displaying negative times
 * Design single API call to get historic indoor and forecast outdoor temperature
 * Display weather icons
