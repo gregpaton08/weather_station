@@ -36,6 +36,11 @@
 flask/bin/gunicorn run:app
 ```
 
+### Deploy to Heroku
+```
+git push heroku master
+```
+
 ### Set config var (for API keys)
 
 ```
