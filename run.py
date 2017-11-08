@@ -1,3 +1,4 @@
+#!flask/bin/python
 
 from app import app
 import sys
