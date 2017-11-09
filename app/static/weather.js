@@ -188,3 +188,7 @@ $(function() {
         drawChart();
     });
 });
+
+window.onfocus = function() {
+    console.log('focus!');
+};
