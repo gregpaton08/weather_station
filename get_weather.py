@@ -59,7 +59,26 @@ def get_condition():
 def get_hourly_forecast(num_hours=-1):
     url_path = '/hourly/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
-    return weather_data.get('hourly_forecast', [])[:num_hours]
+    data = weather_data.get('hourly_forecast', [])[:num_hours]
+    data = [ { 
+                'year' : x['FCTTIME']['year'],
+                'month' : x['FCTTIME']['mon'],
+                'day' : x['FCTTIME']['mday'],
+                'hour' : x['FCTTIME']['hour'],
+                'minute' : x['FCTTIME']['min'],
+                'temp' : x['temp']['metric']
+              } for x in data]
+
+    # Add in the current temperature.
+    current_time_and_temp = local_time.get_est_time_dict()
+    current_time_and_temp['temp'] = get_temperature_c() 
+    data.append(current_time_and_temp)
+
+    previous_hour_time_and_temp = local_time.datetime_to_dict(local_time.get_est_time() - datetime.timedelta(hours=1))
+    previous_hour_time_and_temp['temp'] = get_temperature_c()
+    data.append(previous_hour_time_and_temp)
+
+    return data
 
 
 def get_hourly_history():
@@ -89,26 +108,7 @@ def get_hourly_history():
 
 
 def get_hourly_weather():
-    data = get_hourly_forecast()
-    data = [ { 
-                'year' : x['FCTTIME']['year'],
-                'month' : x['FCTTIME']['mon'],
-                'day' : x['FCTTIME']['mday'],
-                'hour' : x['FCTTIME']['hour'],
-                'minute' : x['FCTTIME']['min'],
-                'temp' : x['temp']['metric']
-              } for x in data]
-
-    # Add in the current temperature.
-    current_time_and_temp = local_time.get_est_time_dict()
-    current_time_and_temp['temp'] = get_temperature_c() 
-    data.append(current_time_and_temp)
-
-    previous_hour_time_and_temp = local_time.datetime_to_dict(local_time.get_est_time() - datetime.timedelta(hours=1))
-    previous_hour_time_and_temp['temp'] = get_temperature_c()
-    data.append(previous_hour_time_and_temp)
-
-    return data + get_hourly_history()
+    return get_hourly_forecast() + get_hourly_history()
 
 
 def __get_astronomy_data():
