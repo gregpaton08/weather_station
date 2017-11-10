@@ -5,12 +5,18 @@ var forecastData = [];
 var historyData = [];
 var currentTime;
 
+/**
+ * Conver celsisu to fahrenheit.
+ */
 function convertCelsiusToFahrenheit(celsius) {
     var fahrenheit = ((celsius * 9.0) / 5.0) + 32.0;
     // Round to one decimal place.
     return Math.round(fahrenheit * 10) / 10;
 }
 
+/**
+ * Convert the temperature to the desired units.
+ */
 function convertTemperature(temperature) {
     if (temperature == null) {
         return null;
@@ -23,6 +29,9 @@ function convertTemperature(temperature) {
     }
 }
 
+/**
+ * Convert 24 hour to am/pm.
+ */
 function formatTime(hour) {
     if (hour == 0) {
         return '12 am';
@@ -35,11 +44,18 @@ function formatTime(hour) {
     }
 }
 
+/**
+ * Update the current indoor and outdoor temperature.
+ */
 function updateTemperature() {
     $('#insidetemp').text(Math.round(convertTemperature(insideTemperatureC)));
     $('#outsidetemp').text(Math.round(convertTemperature(outsideTemperatureC)));
 }
 
+
+/**
+ * Draw the temperature chart.
+ */
 function drawChart() {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Time');
@@ -103,6 +119,9 @@ function drawChart() {
     chart.draw(data, options);
 }
 
+/**
+ * Update weather data by calling APIs.
+ */
 function updateData() {
     $SCRIPT_ROOT = ''
 
@@ -148,10 +167,12 @@ function updateData() {
 
 updateData();
 
+/** Anonymous function to call the updateData function every 30 seconds. */
 $(function() {
     setInterval(updateData, 30000);
 });
 
+/** Function tied to button to toggle between celsisu and fahrenheit. */
 $(function() {    
     $("#temp_type").click(function(e) {
         e.preventDefault();
