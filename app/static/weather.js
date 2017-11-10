@@ -1,11 +1,8 @@
-var displayTemperatureInFahrenheit = true;
-var insideTemperatureC = 0;
-var outsideTemperatureC = 0;
-var currentTime;
 
 var weatherGlobals = {
     outdoorData: [],
-    indoorData: []
+    indoorData: [],
+    displayTemperatureInFahrenheit: true
 };
 
 
@@ -26,7 +23,7 @@ function convertTemperature(temperature) {
         return null;
     }
 
-    if (displayTemperatureInFahrenheit) {
+    if (weatherGlobals.displayTemperatureInFahrenheit) {
         return convertCelsiusToFahrenheit(temperature);
     } else {
         return temperature;
@@ -52,8 +49,8 @@ function formatTime(hour) {
  * Update the current indoor and outdoor temperature.
  */
 function updateTemperature() {
-    $('#insidetemp').text(Math.round(convertTemperature(insideTemperatureC)));
-    $('#outsidetemp').text(Math.round(convertTemperature(outsideTemperatureC)));
+    $('#insidetemp').text(Math.round(convertTemperature(weatherGlobals.insideTemperatureC)));
+    $('#outsidetemp').text(Math.round(convertTemperature(weatherGlobals.outsideTemperatureC)));
 }
 
 
@@ -68,7 +65,7 @@ function drawChart() {
 
     // Populate historical indoor temperature data for the chart.
     var previousHours = 12;
-    var currentDate = new Date(parseInt(currentTime.year), currentTime.month - 1, currentTime.day, currentTime.hour - previousHours);
+    var currentDate = new Date(parseInt(weatherGlobals.currentTime.year), weatherGlobals.currentTime.month - 1, weatherGlobals.weatherGlobals.currentTime.day, weatherGlobals.currentTime.hour - previousHours);
     var arrayLength = Math.min(weatherGlobals.outdoorData.length, 12);
     for (var i = -previousHours; i < arrayLength; i++) {
 
@@ -130,8 +127,8 @@ function updateData() {
     $SCRIPT_ROOT = ''
 
     $.getJSON($SCRIPT_ROOT + '/get_temperature_data_c', {}, function(data) {
-        insideTemperatureC = data.inside_temperature;
-        outsideTemperatureC = data.outside_temperature;
+        weatherGlobals.insideTemperatureC = data.inside_temperature;
+        weatherGlobals.outsideTemperatureC = data.outside_temperature;
 
         updateTemperature();
     });
@@ -139,7 +136,7 @@ function updateData() {
     $.when(
         $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
 
-            currentTime = data.current_time;
+            weatherGlobals.currentTime = data.current_time;
 
             $.each(data.weather, function(index, value) {
                 weatherData = {}
@@ -180,8 +177,8 @@ $(function() {
 $(function() {    
     $("#temp_type").click(function(e) {
         e.preventDefault();
-        displayTemperatureInFahrenheit = !displayTemperatureInFahrenheit;
-        if (displayTemperatureInFahrenheit) {
+        weatherGlobals.displayTemperatureInFahrenheit = !weatherGlobals.displayTemperatureInFahrenheit;
+        if (weatherGlobals.displayTemperatureInFahrenheit) {
             $("#temp_type").html('<a href="#">c&deg;</a>|f&deg;');
         } else {
             $("#temp_type").html('c&deg;|<a href="#">f&deg;</a>');
