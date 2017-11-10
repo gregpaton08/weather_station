@@ -70,6 +70,7 @@ function drawChart() {
     for (var i = -previousHours; i < arrayLength; i++) {
 
         // Search the data for the current hour
+        // TODO: find a better way to do this. Maybe organize the data in order beforehand instead of searching each time. Same with the block below for outdoor temperature.
         currentTemperature = weatherGlobals.indoorData.find(function(element) {
             return parseInt(element['year']) == currentDate.getFullYear() &&
                    parseInt(element['month']) == currentDate.getMonth() + 1 &&
