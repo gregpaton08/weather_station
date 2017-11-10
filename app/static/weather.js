@@ -1,11 +1,12 @@
 var displayTemperatureInFahrenheit = true;
 var insideTemperatureC = 0;
 var outsideTemperatureC = 0;
-var forecastData = [];
-var historyData = [];
 var currentTime;
 
-var weatherGlobals = {};
+var weatherGlobals = {
+    outdoorData: [],
+    indoorData: []
+};
 
 
 /**
@@ -68,11 +69,11 @@ function drawChart() {
     // Populate historical indoor temperature data for the chart.
     var previousHours = 12;
     var currentDate = new Date(parseInt(currentTime.year), currentTime.month - 1, currentTime.day, currentTime.hour - previousHours);
-    var arrayLength = Math.min(forecastData.length, 12);
+    var arrayLength = Math.min(weatherGlobals.outdoorData.length, 12);
     for (var i = -previousHours; i < arrayLength; i++) {
 
         // Search the data for the current hour
-        currentTemperature = historyData.find(function(element) {
+        currentTemperature = weatherGlobals.indoorData.find(function(element) {
             return parseInt(element['year']) == currentDate.getFullYear() &&
                    parseInt(element['month']) == currentDate.getMonth() + 1 &&
                    parseInt(element['day']) == currentDate.getDate() &&
@@ -86,7 +87,7 @@ function drawChart() {
             console.log('No indoor temperature for hour ' + currentDate);
         }
 
-        outdoorTemperature = forecastData.find(function(element) {
+        outdoorTemperature = weatherGlobals.outdoorData.find(function(element) {
             return parseInt(element['year']) == currentDate.getFullYear() &&
                    parseInt(element['month']) == currentDate.getMonth() + 1 &&
                    parseInt(element['day']) == currentDate.getDate() &&
@@ -147,7 +148,7 @@ function updateData() {
                 weatherData['day'] = value.day
                 weatherData['hour'] = value.hour;
                 weatherData['temperature'] = value.temp;
-                forecastData.push(weatherData);
+                weatherGlobals.outdoorData.push(weatherData);
             });
         }),
 
@@ -159,11 +160,8 @@ function updateData() {
                 indoorData['day'] = value.day
                 indoorData['hour'] = value.hour;
                 indoorData['temperature'] = value.temperature;
-                historyData.push(indoorData);
+                weatherGlobals.indoorData.push(indoorData);
             });
-
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
         })
     ).then(function() {
         google.charts.load('current', {'packages':['corechart']});
