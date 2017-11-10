@@ -58,14 +58,14 @@ function updateTemperature() {
  * Draw the temperature chart.
  */
 function drawChart() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Time');
-    data.addColumn('number', 'Indoor');
-    data.addColumn('number', 'Outdoor');
+    var chartData = new google.visualization.DataTable();
+    chartData.addColumn('string', 'Time');
+    chartData.addColumn('number', 'Indoor');
+    chartData.addColumn('number', 'Outdoor');
 
     // Populate historical indoor temperature data for the chart.
     var previousHours = 12;
-    var currentDate = new Date(parseInt(weatherGlobals.currentTime.year), weatherGlobals.currentTime.month - 1, weatherGlobals.weatherGlobals.currentTime.day, weatherGlobals.currentTime.hour - previousHours);
+    var currentDate = new Date(parseInt(weatherGlobals.currentTime.year), weatherGlobals.currentTime.month - 1, weatherGlobals.currentTime.day, weatherGlobals.currentTime.hour - previousHours);
     var arrayLength = Math.min(weatherGlobals.outdoorData.length, 12);
     for (var i = -previousHours; i < arrayLength; i++) {
 
@@ -97,12 +97,14 @@ function drawChart() {
             console.log('No outdoor temperature for ' + currentDate);
         }
 
-        data.addRow([
+        // Add the data to the chart.
+        chartData.addRow([
             formatTime(currentDate.getHours()),
             convertTemperature(temperature),
             convertTemperature(outdoorTemperature)
         ]);
 
+        // Increment the current data by an hour.
         currentDate.setHours(currentDate.getHours() + 1);
     }
 
@@ -117,7 +119,7 @@ function drawChart() {
 
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-    chart.draw(data, options);
+    chart.draw(chartData, options);
 }
 
 /**
