@@ -16,7 +16,6 @@
 * Add option to set location
 * Split app into client/server in separate repos?
 * Unit tests!!!!!
-
 * Consider updating site colors
 
 <img src="invert.png" width="600">
