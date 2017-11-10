@@ -5,6 +5,9 @@ var forecastData = [];
 var historyData = [];
 var currentTime;
 
+var weatherGlobals = {};
+
+
 /**
  * Conver celsisu to fahrenheit.
  */
@@ -132,20 +135,21 @@ function updateData() {
         updateTemperature();
     });
 
-    $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
+    $.when(
+        $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
 
-        currentTime = data.current_time;
+            currentTime = data.current_time;
 
-        $.each(data.weather, function(index, value) {
-            weatherData = {}
-            weatherData['year'] = value.year
-            weatherData['month'] = value.month
-            weatherData['day'] = value.day
-            weatherData['hour'] = value.hour;
-            weatherData['temperature'] = value.temp;
-            forecastData.push(weatherData);
-        });
-
+            $.each(data.weather, function(index, value) {
+                weatherData = {}
+                weatherData['year'] = value.year
+                weatherData['month'] = value.month
+                weatherData['day'] = value.day
+                weatherData['hour'] = value.hour;
+                weatherData['temperature'] = value.temp;
+                forecastData.push(weatherData);
+            });
+        }),
 
         $.getJSON($SCRIPT_ROOT + 'get_hourly_indoor_history', {}, function(indoorData) {
             $.each(indoorData.history, function(index, value) {
@@ -160,8 +164,10 @@ function updateData() {
 
             google.charts.load('current', {'packages':['corechart']});
             google.charts.setOnLoadCallback(drawChart);
-        });
-
+        })
+    ).then(function() {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
     });
 }
 
