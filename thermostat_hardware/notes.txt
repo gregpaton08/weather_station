@@ -2,4 +2,4 @@ RH - This wire comes from the 24VAC transformer on the heating system.
 RC - This wire comes from the 24VAC transformer on the air-conditioning system.
 W  - This wire comes from the relay that turns on the heating system.
 Y  - This wire comes from the relay that turns on the cooling system.
-G  - This wire comes from the relay that turns on the fan.w
+G  - This wire comes from the relay that turns on the fan.
