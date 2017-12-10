@@ -9,6 +9,11 @@
 flask/bin/gunicorn run:app
 ```
 
+## Create Heroku remote
+```
+heroku git:remote -a murmuring-caverns-91180
+```
+
 ### Deploy to Heroku
 ```
 git push heroku master
