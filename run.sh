@@ -1,0 +1,1 @@
+venv/bin/gunicorn run:app
