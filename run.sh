@@ -1,1 +1,1 @@
-venv/bin/gunicorn run:app
+venv/bin/gunicorn app:app
