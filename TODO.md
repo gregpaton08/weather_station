@@ -16,7 +16,7 @@
 * Unit tests!!!!!
 * Consider updating site colors
 
-<img src="invert.png" width="600">
+<img src="notes/invert.png" width="600">
 
 ## Complete
 * Store historical indoor temperature in database
