@@ -1,1 +1,1 @@
-venv/bin/gunicorn app:app
+venv/bin/python debug_run.py
