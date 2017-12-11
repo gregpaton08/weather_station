@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, g, request
 from weatherstation import app
-import get_weather
+from weather import get_weather
 import thermometer
 import thermometer_db
 from flask_httpauth import HTTPBasicAuth
