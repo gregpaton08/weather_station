@@ -1,10 +1,12 @@
 # To Do
 
 ## Open
+* Update/improve security
 * Store historical indoor/outdoor data in persistant database (Heroku?)
 * Unix time instead of full date in API JSON data?
 * API throttling to prevent malicious attacks (?). Anything built in to Flask?
 * Design single API call to get historic indoor and forecast outdoor temperature
+* Display weather conditions as text
 * Display weather icons
 * Display weather warnings
 * Design outdoor weather icons (sun, clouds, rain, wind, etc.)
