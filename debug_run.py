@@ -1,4 +1,4 @@
-#!flask/bin/python
+#!venv/bin/python
 
 from weatherstation import app
 import sys
