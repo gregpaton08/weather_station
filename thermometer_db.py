@@ -116,7 +116,6 @@ def get_connection():
 
 
 def get_temperature_c(connection=None):
-    print('get_temperature_c')
     need_to_close_connection = False
     if connection is None:
         connection = get_connection()
@@ -138,6 +137,7 @@ def store_temperature(temperature):
     
     # Create the table if it does not exist.
     if not __does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
+        print('creating database...')
         cursor.execute(open('schema.sql', 'r').read())
         connection.commit()
     
@@ -164,7 +164,7 @@ def dump_database():
 
 
 if __name__ == '__main__':
-#    store_current_temperature()
+    store_current_temperature()
 
     print(DATABASE_FILE_NAME)
 
