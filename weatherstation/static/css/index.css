@@ -19,7 +19,7 @@
     opacity: .47;
 }
 
-.indoor-temp-display {
+.temperature-display {
     position: absolute;
     top: 100px;
     left: 17px;
