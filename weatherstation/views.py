@@ -1,5 +1,5 @@
 from flask import render_template, jsonify, g, request
-from app import app
+from weatherstation import app
 import get_weather
 import thermometer
 import thermometer_db

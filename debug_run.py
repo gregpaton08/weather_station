@@ -1,6 +1,6 @@
 #!flask/bin/python
 
-from app import app
+from weatherstation import app
 import sys
 
 if __name__ == '__main__':

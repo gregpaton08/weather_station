@@ -5,7 +5,7 @@ import time
 import thermometer
 from datetime import datetime, timedelta
 import os
-from app import app
+from weatherstation import app
 
 
 IS_PRODUCTION = False
