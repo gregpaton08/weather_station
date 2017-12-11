@@ -1,11 +1,10 @@
 from flask import render_template, jsonify, g, request
 from weatherstation import app
-from weather import get_weather
+from weather import get_weather, local_time
 import thermometer
-import thermometer_db
+from database import thermometer_db
 from flask_httpauth import HTTPBasicAuth
 import os
-import local_time
 
 auth = HTTPBasicAuth()
 
