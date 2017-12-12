@@ -1,5 +1,4 @@
 .center {
-    /*width: 800px;*/
     padding: 10px;
     font-family: arial;
     text-align: center;
@@ -35,24 +34,16 @@
     position: absolute;
     margin: 0px;
     padding: 0px;
-    /*right: 0;*/
-    /*background-color: #000;*/
     width: 400px;
     height: 250px;
 }
 
 #inside-temp-display {
-    /*background-image: url(/static/images/house.png);*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: center;*/
-    /*background-size: contain;*/
     width: 400px;
     height: 250px;
 }
 
 #outside-temp-display {
-    position: relative;
-    float: left;
 }
 
 .temperature-display {
