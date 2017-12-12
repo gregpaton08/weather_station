@@ -65,6 +65,30 @@ function updateTemperature() {
     $('#outside-temperature').text(formatTemperature(weatherGlobals.outsideTemperatureC));
 }
 
+/**
+ *
+ */
+function updateWeatherCondition(condition) {
+    var conditionImage;
+    switch (condition.toLowerCase()) {
+        case 'rain':
+            conditionImage = 'static/images/rain.png';
+            break;
+    }
+
+    var imageDiv = document.getElementById('condition-image');
+    if (!conditionImage) {
+        var text = document.createElement('span');
+        text.innerHTML = condition;
+        imageDiv.appendChild(text);
+    } else {
+        var image = document.createElement('img');
+        img.src = conditionImage;
+        imageDiv.appendChild(image);
+        $('#condition-image').text('<img src="' + conditionImage + '">');                    
+    }
+}
+
 
 /**
  * Draw the temperature chart.
@@ -177,7 +201,8 @@ function updateData() {
         }),
 
         $.getJSON($SCRIPT_ROOT + 'weather', {}, function(data) {
-            $('#outside-condition').text(data.weather.toLowerCase());
+            updateWeatherCondition(data.weather);
+            // $('#outside-condition').text(data.weather.toLowerCase());
         })
     ).then(function() {
         google.charts.load('current', {'packages':['corechart']});

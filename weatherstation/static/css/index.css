@@ -44,7 +44,7 @@
     height: 250px;
 }
 
-.condition-image {
+#condition-image {
     opacity: .47;
     position: absolute;
     margin: 0px;
