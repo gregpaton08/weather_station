@@ -70,9 +70,13 @@ function updateTemperature() {
  */
 function updateWeatherCondition(condition) {
     var conditionImage;
-    switch (condition.toLowerCase()) {
+    condition = condition.toLowerCase();
+    switch (condition) {
         case 'rain':
             conditionImage = 'static/images/rain.png';
+            break;
+        case 'overcast':
+            conditionImage = 'static/images/overcast.png';
             break;
     }
 
@@ -80,10 +84,7 @@ function updateWeatherCondition(condition) {
     if (!conditionImage) {
         imageDiv.innerHTML = condition;
     } else {
-        var image = document.createElement('img');
-        img.src = conditionImage;
-        imageDiv.appendChild(image);
-        $('#condition-image').text('<img src="' + conditionImage + '">');                    
+        imageDiv.innerHTML = '<img src="' + conditionImage + '">';                 
     }
 }
 
@@ -210,9 +211,9 @@ function updateData() {
 
 updateData();
 
-/** Anonymous function to call the updateData function every 30 seconds. */
+/** Anonymous function to call the updateData function periodically. */
 $(function() {
-    setInterval(updateData, 30000);
+    setInterval(updateData, 300000);
 });
 
 /** Function tied to button to toggle between celsisu and fahrenheit. */
