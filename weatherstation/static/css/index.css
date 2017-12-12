@@ -1,21 +1,19 @@
 .center {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: flex-start;
     /*width: 800px;*/
     padding: 10px;
     font-family: arial;
     text-align: center;
     font-size: 100px;
     color: #888;
-    /*margin: 0 auto;*/
-    /*margin-left: 10%;*/
-    margin-left: calc(33.33% - 233.33px);
+    margin-left: 100px;
 }
 
-@media (min-width: 1000px) {
+@media (max-width: 1000px) {
     .center {
-        margin-left: 100px;
+        margin-left: calc(33.33% - 233.33px);
     }
 }
 
@@ -27,14 +25,18 @@
 
 
 .temperature {
-    /*position: relative;*/
-    /*width: 100%;*/
     float: left;
 }
 
 .house-icon {
     opacity: .47;
     position: absolute;
+    margin: 0px;
+    padding: 0px;
+    /*right: 0;*/
+    /*background-color: #000;*/
+    width: 400px;
+    height: 250px;
 }
 
 .temperature-display-container {
@@ -47,20 +49,15 @@
     /*background-position: center;*/
     /*background-size: contain;*/
     width: 400px;
-    /*height: 400px;*/
-    /*display: flex;*/
+    height: 250px;
 }
 
 #outside-temp-display {
-/*    width: 400px;
-    height: 400px;*/
     position: relative;
     float: left;
 }
 
 .temperature-display {
-    /*top: 100px;*/
-    /*left: 17px;*/
     margin-top: 200px;
     width: 100%;
 }
@@ -85,7 +82,6 @@
 
 #curve_chart {
     float: left;
-    /*margin-left:100px;*/
     width: 800px;
     height: 400px;
 }

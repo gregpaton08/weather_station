@@ -8,23 +8,25 @@
 <body>
     <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type=text/javascript src="{{ url_for('static', filename='weather.js') }}"></script>
+    <!-- <script type=text/javascript src="{{ url_for('static', filename='weather.js') }}"></script> -->
 
     <div class="center">
         <div id="inside-temp-display">
-            <!-- <img class="house-icon" src="static/images/house.png"> -->
+            <div class="house-icon">
+                <img src="static/images/house.png">
+            </div>
                 <span class="temperature-display">
-                    <span id="insidetemp">--</span>&deg;
+                    <span id="insidetemp">63</span>&deg;
                 </span>
         </div>
         <div id="outside-temp-display">
             <span class="temperature-display">
-                <span id="outsidetemp">--</span>&deg;
+                <span id="outsidetemp">45</span>&deg;
             </span>
         </div>
         <div class="temperature">
             <span class="temperature-display">
-                <span id="outside-condition"></span>
+                <span id="outside-condition">overcast</span>
             </span>
         </div>
         <!-- <br/> -->
