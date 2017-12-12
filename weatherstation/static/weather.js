@@ -31,6 +31,18 @@ function convertTemperature(temperature) {
 }
 
 /**
+ * Format the temperature by converting it to the proper units and adding the degree symbol.
+ */
+function formatTemperature(temperature) {
+    if (temperature == null) {
+        return null;
+    }
+
+    formattedTemperature = Math.round(convertTemperature(temperature));
+    return formattedTemperature + '\xB0';
+}
+
+/**
  * Convert 24 hour to am/pm.
  */
 function formatTime(hour) {
@@ -49,8 +61,8 @@ function formatTime(hour) {
  * Update the current indoor and outdoor temperature.
  */
 function updateTemperature() {
-    $('#insidetemp').text(Math.round(convertTemperature(weatherGlobals.insideTemperatureC)));
-    $('#outsidetemp').text(Math.round(convertTemperature(weatherGlobals.outsideTemperatureC)));
+    $('#insidetemp').text(formatTemperature(weatherGlobals.insideTemperatureC));
+    $('#outsidetemp').text(formatTemperature(weatherGlobals.outsideTemperatureC));
 }
 
 
