@@ -12,12 +12,10 @@ api_cache_file = 'apicache.p'
 
 
 def __load_cache_data():
-    cache_data = None
-    if os.path.isfile(api_cache_file):
-        cache_data = pickle.load(open(api_cache_file, 'rb'))
-    if not cache_data:
-        cache_data = {}
-    return cache_data
+    try:
+        return pickle.load(open(api_cache_file, 'rb'))
+    except:
+        return {}
 
 
 def save_cache_data(key, data):
