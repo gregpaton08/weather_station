@@ -102,6 +102,9 @@ function triggerAnimations() {
 
     var conditionImage = document.getElementById('condition-image');
     conditionImage.style.marginLeft = "0px";
+
+    var curveChart = document.getElementById('curve-chart');
+    curveChart.style.marginTop = "0px";
 }
 
 /**
@@ -168,7 +171,7 @@ function drawChart() {
         hAxis: { showTextEvery: 3 }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    var chart = new google.visualization.LineChart(document.getElementById('curve-chart'));
 
     chart.draw(chartData, options);
 }
