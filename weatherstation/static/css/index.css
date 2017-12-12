@@ -55,6 +55,12 @@
     margin-top: 100px;
 }
 
+.temperature-display-transition {
+    opacity: 0;
+    -webkit-transition: opacity 3s;
+    transition: opacity 3s;
+}
+
 .temperature {
     float: left;
 }

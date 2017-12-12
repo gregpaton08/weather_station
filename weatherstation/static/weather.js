@@ -105,6 +105,11 @@ function triggerAnimations() {
 
     var curveChart = document.getElementById('curve-chart');
     curveChart.style.marginTop = "0px";
+
+    var temperatureDisplays = document.getElementsByClassName('temperature-display-transition');
+    for (var i = 0; i < temperatureDisplays.length; ++i) {
+        temperatureDisplays[i].style.opacity = '1';
+    }
 }
 
 /**
