@@ -24,7 +24,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 
-    /*text-shadow: 10px 10px #222;*/
+    text-shadow: -1px 0px white, 1px 0px white, 0px 1px white, 0px -1px white;
 }
 
 .temperature-display {
