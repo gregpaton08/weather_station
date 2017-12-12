@@ -216,7 +216,7 @@ function updateData() {
     });
 }
 
-updateData();
+window.onload = updateData();
 
 /** Anonymous function to call the updateData function periodically. */
 $(function() {
