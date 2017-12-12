@@ -96,6 +96,10 @@ function updateWeatherCondition(condition) {
     }
 }
 
+function triggerAnimations() {
+    var houseImage = document.getElementById('house-image');
+    houseImage.style.marginLeft = "0px";
+}
 
 /**
  * Draw the temperature chart.
@@ -211,9 +215,10 @@ function updateData() {
             });
         })
     ).then(function() {
-        var houseImage = document.getElementById('house-image').getElementsByTagName('img')[0];
-        // houseImage.style.animationIterationCount = "1";
-        houseImage.classList.add('house-image-translate');
+        // var houseImage = document.getElementById('house-image').getElementsByTagName('img')[0];
+        // // houseImage.style.animationIterationCount = "1";
+        // houseImage.classList.add('house-image-translate');
+        triggerAnimations();
 
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -221,8 +226,6 @@ function updateData() {
 }
 
 window.onload = function() {
-    var houseImage = document.getElementById('house-image');
-    houseImage.style.marginLeft = "0px";
     updateData();
 }
 
