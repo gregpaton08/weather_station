@@ -47,7 +47,10 @@
     height: 250px;
 }
 
-#outside-temp-display {
+#outside-temperature-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .temperature-display {
