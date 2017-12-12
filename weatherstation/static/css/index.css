@@ -1,7 +1,7 @@
 .center {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     /*width: 800px;*/
     padding: 10px;
     font-family: arial;
@@ -9,12 +9,19 @@
     font-size: 100px;
     color: #888;
     /*margin: 0 auto;*/
-    margin-left: 10%;
+    /*margin-left: 10%;*/
+    margin-left: calc(33.33% - 233.33px);
 }
 
 @media (min-width: 1000px) {
     .center {
         margin-left: 100px;
+    }
+}
+
+@media (max-width: 700px) {
+    .center {
+        margin-left: 0px;
     }
 }
 
