@@ -1,13 +1,23 @@
 .center {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    width: 800px;
+    /*width: 800px;*/
     padding: 10px;
     font-family: arial;
     text-align: center;
     font-size: 100px;
     color: #888;
+    /*margin: 0 auto;*/
+    margin-left: 10%;
 }
+
+@media (min-width: 1000px) {
+    .center {
+        margin-left: 100px;
+    }
+}
+
 
 .temperature {
     /*position: relative;*/
@@ -18,6 +28,10 @@
 .house-icon {
     opacity: .47;
     position: absolute;
+}
+
+.temperature-display-container {
+    display: flex;
 }
 
 #inside-temp-display {
@@ -64,7 +78,7 @@
 
 #curve_chart {
     float: left;
-    margin-left:100px;
+    /*margin-left:100px;*/
     width: 800px;
     height: 400px;
 }
