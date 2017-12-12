@@ -1,6 +1,7 @@
 # To Do
 
 ## Open
+* debug performance bottleneck. Data is cached, requests shouldn't take so long.
 * Design outdoor weather icons (sun, clouds, rain, wind, etc.)
 * Update/improve security for temperature POST
 * Store historical indoor/outdoor data in persistant database (Heroku?)
