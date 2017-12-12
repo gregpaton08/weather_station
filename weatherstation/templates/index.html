@@ -11,18 +11,23 @@
     <script type=text/javascript src="{{ url_for('static', filename='weather.js') }}"></script>
 
     <div class="center">
-        <div class="temperature">
-            <img class="house-icon" src="static/images/house.png">
-                <span class="temperature-display" width="400">
-                    <span id="insidetemp"></span>&deg;
+        <div id="inside-temp-display">
+            <!-- <img class="house-icon" src="static/images/house.png"> -->
+                <span class="temperature-display">
+                    <span id="insidetemp">--</span>&deg;
                 </span>
         </div>
-        <div class="temperature">
-            <span class="temperature-display" width="400">
-                <span id="outsidetemp"></span>&deg;
+        <div id="outside-temp-display">
+            <span class="temperature-display">
+                <span id="outsidetemp">--</span>&deg;
             </span>
         </div>
-        <br/>
+        <div class="temperature">
+            <span class="temperature-display">
+                <span id="outsidetemp">condition</span>
+            </span>
+        </div>
+        <!-- <br/> -->
     </div>
 
     <div id="curve_chart"></div>
