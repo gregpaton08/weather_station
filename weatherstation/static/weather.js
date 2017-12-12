@@ -92,7 +92,6 @@ function updateWeatherCondition(condition) {
         imgTag += ' alt="' + condition + '"';
         imgTag += ' title="' + condition + '"';
         imgTag += '>';
-        console.log(imgTag);
         imageDiv.innerHTML = imgTag;             
     }
 }
