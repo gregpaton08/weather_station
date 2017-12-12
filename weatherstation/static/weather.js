@@ -227,12 +227,10 @@ function updateData() {
 
 window.onload = function() {
     updateData();
-}
 
-/** Anonymous function to call the updateData function periodically. */
-$(function() {
+    /* Call the updateData function periodically. */
     setInterval(updateData, 300000);
-});
+}
 
 /** Function tied to button to toggle between celsisu and fahrenheit. */
 $(function() {    
