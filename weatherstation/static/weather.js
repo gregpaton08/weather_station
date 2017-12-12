@@ -162,6 +162,10 @@ function updateData() {
                 indoorData['temperature'] = value.temperature;
                 weatherGlobals.indoorData.push(indoorData);
             });
+        }),
+
+        $.getJSON($SCRIPT_ROOT + 'weather', {}, function(data) {
+            console.log(data.weather);
         })
     ).then(function() {
         google.charts.load('current', {'packages':['corechart']});
