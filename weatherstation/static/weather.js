@@ -62,7 +62,7 @@ function formatTime(hour) {
  */
 function updateTemperature() {
     $('#insidetemp').text(formatTemperature(weatherGlobals.insideTemperatureC));
-    $('#outsidetemp').text(formatTemperature(weatherGlobals.outsideTemperatureC));
+    $('#outside-temperature').text(formatTemperature(weatherGlobals.outsideTemperatureC));
 }
 
 

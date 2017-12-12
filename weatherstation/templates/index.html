@@ -16,22 +16,22 @@
                     <img src="static/images/house.png">
                 </div>
                 <div class="temperature-display">
-                    <span id="insidetemp">63&deg;</span>
+                    <span id="insidetemp"></span>
                 </div>
             </div>
             <div id="outside-temperature-container" class="temperature-display">
                 <div>
-                    <span id="outside-temperature">45&deg;</span>
+                    <span id="outside-temperature"></span>
                 </div>
                 <div>
-                    <span id="outside-condition">test</span>
+                    <span id="outside-condition"></span>
                 </div>
             </div>
         </div>
 
         <div id="curve_chart"></div>
     </div>
-    
+
     <script type=text/javascript src="{{ url_for('static', filename='weather.js') }}"></script>
 
 </body>
