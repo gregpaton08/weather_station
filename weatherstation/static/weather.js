@@ -165,7 +165,7 @@ function updateData() {
         }),
 
         $.getJSON($SCRIPT_ROOT + 'weather', {}, function(data) {
-            console.log(data.weather);
+            $('#outside-condition').text(data.weather.toLowerCase());
         })
     ).then(function() {
         google.charts.load('current', {'packages':['corechart']});
