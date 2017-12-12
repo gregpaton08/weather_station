@@ -61,7 +61,7 @@ function formatTime(hour) {
  * Update the current indoor and outdoor temperature.
  */
 function updateTemperature() {
-    $('#insidetemp').text(formatTemperature(weatherGlobals.insideTemperatureC));
+    $('#inside-temperature').text(formatTemperature(weatherGlobals.insideTemperatureC));
     $('#outside-temperature').text(formatTemperature(weatherGlobals.outsideTemperatureC));
 }
 
