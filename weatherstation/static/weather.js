@@ -211,6 +211,9 @@ function updateData() {
             });
         })
     ).then(function() {
+        var houseImage = document.getElementById('house-image').getElementsByTagName('img')[0];
+        houseImage.style.animationIterationCount = "1";
+
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
     });

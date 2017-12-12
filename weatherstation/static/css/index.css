@@ -59,7 +59,7 @@
     float: left;
 }
 
-.house-image {
+#house-image {
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -76,7 +76,7 @@
     left: 50%;
 }
 
-.house-image, #condition-image {
+#house-image, #condition-image {
     opacity: .47;
 }
 
@@ -102,4 +102,20 @@
 
 #outside-temperature {
     margin-right: 20px;   
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#house-image img {
+    -webkit-animation-name: rotate; 
+    -webkit-animation-duration: 2.5s; 
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
 }
