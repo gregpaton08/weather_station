@@ -78,9 +78,7 @@ function updateWeatherCondition(condition) {
 
     var imageDiv = document.getElementById('condition-image');
     if (!conditionImage) {
-        var text = document.createElement('span');
-        text.innerHTML = condition;
-        imageDiv.appendChild(text);
+        imageDiv.innerHTML = condition;
     } else {
         var image = document.createElement('img');
         img.src = conditionImage;
