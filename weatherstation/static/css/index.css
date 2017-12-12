@@ -136,8 +136,8 @@
     margin-left: -256px;
     margin-top: -256px;
 
-    -webkit-transition: margin-top 3s;
-    transition: margin-top 3s;
+    -webkit-transition: margin-top 3s, visibility 3s;
+    transition: margin-top 3s, visibility 3s;
 }
 
 @-webkit-keyframes rotate {
