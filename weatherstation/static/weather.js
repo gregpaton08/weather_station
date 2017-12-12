@@ -175,6 +175,10 @@ function updateData() {
     });
 
     $.when(
+        $.getJSON($SCRIPT_ROOT + 'weather', {}, function(data) {
+            updateWeatherCondition(data.weather);
+        }),
+
         $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
 
             weatherGlobals.currentTime = data.current_time;
@@ -200,11 +204,6 @@ function updateData() {
                 indoorData['temperature'] = value.temperature;
                 weatherGlobals.indoorData.push(indoorData);
             });
-        }),
-
-        $.getJSON($SCRIPT_ROOT + 'weather', {}, function(data) {
-            updateWeatherCondition(data.weather);
-            // $('#outside-condition').text(data.weather.toLowerCase());
         })
     ).then(function() {
         google.charts.load('current', {'packages':['corechart']});
