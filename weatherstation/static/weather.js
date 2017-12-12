@@ -97,6 +97,9 @@ function updateWeatherCondition(condition) {
 }
 
 function triggerAnimations() {
+    var loadingImage = document.getElementById('loading-image');
+    loadingImage.style.marginTop = '100%';
+
     var houseImage = document.getElementById('house-image');
     houseImage.style.marginLeft = "0px";
 

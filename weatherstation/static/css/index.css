@@ -127,3 +127,31 @@
 #outside-temperature {
     margin-right: 20px;   
 }
+
+#loading-image {
+    position: absolute;
+    opacity: .47;
+    left: 50%;
+    top: 50%;
+    margin-left: -256px;
+    margin-top: -256px;
+
+    -webkit-transition: margin-top 3s;
+    transition: margin-top 3s;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#loading-image img {
+    -webkit-animation-name: rotate; 
+    -webkit-animation-duration: 4.0s; 
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
