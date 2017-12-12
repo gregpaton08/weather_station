@@ -72,11 +72,14 @@ function updateWeatherCondition(condition) {
     var conditionImage;
     condition = condition.toLowerCase();
     switch (condition) {
+        case 'clear':
+            conditionImage = 'sun.png';
+            break;
         case 'rain':
-            conditionImage = 'static/images/rain.png';
+            conditionImage = 'rain.png';
             break;
         case 'overcast':
-            conditionImage = 'static/images/overcast.png';
+            conditionImage = 'overcast.png';
             break;
     }
 
@@ -84,7 +87,7 @@ function updateWeatherCondition(condition) {
     if (!conditionImage) {
         imageDiv.innerHTML = condition;
     } else {
-        imageDiv.innerHTML = '<img src="' + conditionImage + '">';                 
+        imageDiv.innerHTML = '<img src="static/images/' + conditionImage + '">';                 
     }
 }
 
