@@ -71,12 +71,14 @@
     padding: 0px;
     width: 400px;
     height: 250px;
-    margin-left: -500px;
+
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
 }
 
 .house-image-translate {
-    -webkit-transition: margin-left 2s;
-    transition: margin-left 2s;
+    transform: translate(-150%);
+    -webkit-transform: translate(-150%);
 }
 
 #condition-image {

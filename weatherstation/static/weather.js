@@ -102,7 +102,8 @@ function triggerAnimations() {
     loadingImage.style.visibility = 'hidden';
 
     var houseImage = document.getElementById('house-image');
-    houseImage.style.marginLeft = "0px";
+    // houseImage.style.marginLeft = "0px";
+    houseImage.classList.remove('house-image-translate');
 
     var conditionImage = document.getElementById('condition-image');
     conditionImage.style.marginLeft = "0px";
