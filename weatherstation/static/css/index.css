@@ -24,7 +24,31 @@
     flex-wrap: wrap;
     justify-content: flex-start;
 
-    text-shadow: -1px 0px white, 1px 0px white, 0px 1px white, 0px -1px white;
+    /* 3 pixel border around text */
+    text-shadow: -1px 0px white,
+        1px 0px white,
+        0px 1px white,
+        0px -1px white,
+        1px 1px white,
+        -1px -1px white,
+        -1px 1px white,
+        1px -1px white,
+        -2px 0px white,
+        2px 0px white,
+        0px 2px white,
+        0px -2px white,
+        2px 2px white,
+        -2px -2px white,
+        -2px 2px white,
+        2px -2px white,
+        -3px 0px white,
+        3px 0px white,
+        0px 3px white,
+        0px -3px white,
+        3px 3px white,
+        -3px -3px white,
+        -3px 3px white,
+        3px -3px white;
 }
 
 .temperature-display {
