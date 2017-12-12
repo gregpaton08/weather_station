@@ -76,3 +76,7 @@
     width: 800px;
     height: 400px;
 }
+
+#outside-temperature {
+    margin-right: 20px;   
+}
