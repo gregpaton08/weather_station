@@ -212,7 +212,8 @@ function updateData() {
         })
     ).then(function() {
         var houseImage = document.getElementById('house-image').getElementsByTagName('img')[0];
-        houseImage.style.animationIterationCount = "1";
+        // houseImage.style.animationIterationCount = "1";
+        houseImage.classList.add('house-image-translate');
 
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -220,6 +221,8 @@ function updateData() {
 }
 
 window.onload = function() {
+    var houseImage = document.getElementById('house-image');
+    houseImage.style.marginLeft = "0px";
     updateData();
 }
 
