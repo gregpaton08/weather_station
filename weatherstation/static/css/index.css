@@ -53,11 +53,6 @@
     justify-content: flex-start;
 }
 
-.temperature-display {
-    margin-top: 100px;
-    width: 100%;
-}
-
 .intemp {
     float: left;
 }
