@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .center {
     padding: 10px;
     font-family: arial;
@@ -113,14 +117,13 @@
 }
 
 #condition-image {
-    overflow-x: hidden;
     -webkit-transition-duration: 2s;
     transition-duration: 2s;
 }
 
 .condition-image-translate {
-    transform: translate(150%);
-    -webkit-transform: translate(150%);
+    transform: translate(200%);
+    -webkit-transform: translate(200%);
 }
 
 #curve-chart {
