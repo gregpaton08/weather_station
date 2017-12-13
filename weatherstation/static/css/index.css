@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .center {
@@ -36,8 +36,8 @@ body {
 }
 
 .loading-image-translate {
-    transform: translate(0, 200%);
-    -webkit-transform: translate(0, 200%);
+    transform: translateY(300%);
+    -webkit-transform: translateY(300%);
 }
 
 @-webkit-keyframes rotate {
