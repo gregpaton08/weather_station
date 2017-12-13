@@ -102,11 +102,10 @@ function triggerAnimations() {
     loadingImage.style.visibility = 'hidden';
 
     var houseImage = document.getElementById('house-image');
-    // houseImage.style.marginLeft = "0px";
     houseImage.classList.remove('house-image-translate');
 
     var conditionImage = document.getElementById('condition-image');
-    conditionImage.style.marginLeft = "0px";
+    conditionImage.classList.remove('condition-image-translate');
 
     var curveChart = document.getElementById('curve-chart');
     curveChart.style.marginTop = "0px";

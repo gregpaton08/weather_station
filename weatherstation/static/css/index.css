@@ -105,7 +105,6 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    /*color: #fff;*/
     position: absolute;
     top: 0;
     left: 0;
@@ -113,23 +112,15 @@
     bottom: 0;
 }
 
-#outside-temperature {
-    margin-right: 20px;   
-}
-
 #condition-image {
-/*    position: absolute;
-    margin: 0px;
-    padding: 0px;
-    z-index: -1;
-    top: 0;
-    left: 50%;
-    margin-left: 100%;*/
+    overflow-x: hidden;
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
 }
 
 .condition-image-translate {
-    -webkit-transition: margin-left 2s;
-    transition: margin-left 2s;
+    transform: translate(150%);
+    -webkit-transform: translate(150%);
 }
 
 #curve-chart {
