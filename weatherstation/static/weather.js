@@ -98,8 +98,7 @@ function updateWeatherCondition(condition) {
 
 function triggerAnimations() {
     var loadingImage = document.getElementById('loading-image');
-    // loadingImage.style.marginTop = '100%';
-    // loadingImage.style.visibility = 'hidden';
+    loadingImage.style.visibility = 'hidden';
     loadingImage.classList.add('loading-image-translate');
 
     var houseImage = document.getElementById('house-image');
@@ -109,7 +108,6 @@ function triggerAnimations() {
     conditionImage.classList.remove('condition-image-translate');
 
     var curveChart = document.getElementById('curve-chart');
-    // curveChart.style.marginTop = "0px";
     curveChart.classList.remove('curve-chart-translate');
 
     var temperatureDisplays = document.getElementsByClassName('temperature-display-transition');
