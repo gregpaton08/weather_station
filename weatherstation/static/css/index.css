@@ -81,21 +81,6 @@
     -webkit-transform: translate(-150%);
 }
 
-#condition-image {
-    position: absolute;
-    margin: 0px;
-    padding: 0px;
-    z-index: -1;
-    top: 0;
-    left: 50%;
-    margin-left: 100%;
-}
-
-.condition-image-translate {
-    -webkit-transition: margin-left 2s;
-    transition: margin-left 2s;
-}
-
 #house-image, #condition-image {
     opacity: .47;
 }
@@ -128,6 +113,21 @@
 
 #outside-temperature {
     margin-right: 20px;   
+}
+
+#condition-image {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    margin-left: 100%;
+}
+
+.condition-image-translate {
+    -webkit-transition: margin-left 2s;
+    transition: margin-left 2s;
 }
 
 #loading-image {
