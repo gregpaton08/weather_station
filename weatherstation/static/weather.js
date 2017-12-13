@@ -108,7 +108,8 @@ function triggerAnimations() {
     conditionImage.classList.remove('condition-image-translate');
 
     var curveChart = document.getElementById('curve-chart');
-    curveChart.style.marginTop = "0px";
+    // curveChart.style.marginTop = "0px";
+    curveChart.classList.remove('curve-chart-translate');
 
     var temperatureDisplays = document.getElementsByClassName('temperature-display-transition');
     for (var i = 0; i < temperatureDisplays.length; ++i) {
