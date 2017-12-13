@@ -5,19 +5,17 @@ import os
 import datetime
 
 '''
-Module to cache the data received from the Weather Underground API. Since the API calls are limited to 500/day the number of calls must be throttled. So, the data is cached and update periodically.
+Module to cache the data received from the Weather Underground API. Since the API calls are limited to 500/day the number of calls must be throttled. So, the data is cached and updated periodically.
 '''
 
 api_cache_file = 'apicache.p'
 
 
 def __load_cache_data():
-    cache_data = None
-    if os.path.isfile(api_cache_file):
-        cache_data = pickle.load(open(api_cache_file, 'rb'))
-    if not cache_data:
-        cache_data = {}
-    return cache_data
+    try:
+        return pickle.load(open(api_cache_file, 'rb'))
+    except:
+        return {}
 
 
 def save_cache_data(key, data):

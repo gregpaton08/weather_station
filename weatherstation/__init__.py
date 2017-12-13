@@ -1,7 +1,7 @@
 from flask import Flask, g
 
 app = Flask(__name__)
-from app import views
+from weatherstation import views
 
 
 @app.teardown_appcontext

@@ -2,7 +2,7 @@
 
 import urllib2
 import json
-import apicache
+from apicache import apicache
 import os
 import local_time
 import datetime

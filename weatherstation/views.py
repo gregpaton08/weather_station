@@ -1,11 +1,10 @@
 from flask import render_template, jsonify, g, request
-from app import app
-import get_weather
+from weatherstation import app
+from weather import get_weather, local_time
 import thermometer
-import thermometer_db
+from database import thermometer_db
 from flask_httpauth import HTTPBasicAuth
 import os
-import local_time
 
 auth = HTTPBasicAuth()
 
@@ -29,6 +28,11 @@ def get_sunrise():
 @app.route('/get_sunset')
 def get_sunset():
     return jsonify(sunrise=get_weather.get_sunset())
+
+
+@app.route('/weather')
+def weather():
+    return jsonify(weather=get_weather.get_condition())
 
 
 @app.route('/get_hourly_forecast')

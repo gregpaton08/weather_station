@@ -1,0 +1,173 @@
+body {
+    overflow-x: hidden;
+}
+
+.center {
+    padding: 10px;
+    font-family: arial;
+    text-align: center;
+    font-size: 100px;
+    color: #888;
+    margin-left: 100px;
+}
+
+@media (max-width: 1000px) {
+    .center {
+        margin-left: calc(33.33% - 233.33px);
+    }
+}
+
+@media (max-width: 700px) {
+    .center {
+        margin-left: 0px;
+    }
+}
+
+#loading-image {
+    position: absolute;
+    opacity: .47;
+    left: 50%;
+    top: 50%;
+    margin-left: -256px;
+    margin-top: -256px;
+
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+
+.loading-image-translate {
+    transform: translateY(300%);
+    -webkit-transform: translateY(300%);
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#loading-image img {
+    -webkit-animation-name: rotate; 
+    -webkit-animation-duration: 4.0s; 
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+.temperature-display-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    /* 3 pixel border around text */
+    text-shadow: -1px 0px white,
+        1px 0px white,
+        0px 1px white,
+        0px -1px white,
+        1px 1px white,
+        -1px -1px white,
+        -1px 1px white,
+        1px -1px white,
+        -2px 0px white,
+        2px 0px white,
+        0px 2px white,
+        0px -2px white,
+        2px 2px white,
+        -2px -2px white,
+        -2px 2px white,
+        2px -2px white,
+        -3px 0px white,
+        3px 0px white,
+        0px 3px white,
+        0px -3px white,
+        3px 3px white,
+        -3px -3px white,
+        -3px 3px white,
+        3px -3px white;
+}
+
+.temperature-display {
+    margin-top: 100px;
+}
+
+.temperature-display-transition {
+    opacity: 0;
+    -webkit-transition: opacity 3s;
+    transition: opacity 3s;
+}
+
+.temperature {
+    float: left;
+}
+
+#house-image {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 400px;
+    height: 250px;
+
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+
+.house-image-translate {
+    transform: translate(-150%);
+    -webkit-transform: translate(-150%);
+}
+
+#house-image, #condition-image {
+    opacity: .47;
+}
+
+#inside-temp-display {
+    width: 400px;
+    height: 250px;
+}
+
+#outside-temperature-container {
+    width: 400px;
+    height: 250px;
+
+    position: relative;
+}
+
+#outside-temperature-container img {
+    width: 250px;
+}
+
+#outside-temperature-container .temperature-display {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#condition-image {
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+
+.condition-image-translate {
+    transform: translate(200%);
+    -webkit-transform: translate(200%);
+}
+
+#curve-chart {
+    /*float: left;*/
+    width: 800px;
+    height: 400px;
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+}
+
+.curve-chart-translate {
+    transform: translate(0, 200%);
+    -webkit-transform: translate(0, 200%);
+}

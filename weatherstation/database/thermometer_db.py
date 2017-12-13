@@ -5,7 +5,7 @@ import time
 import thermometer
 from datetime import datetime, timedelta
 import os
-from app import app
+from weatherstation import app
 
 
 IS_PRODUCTION = False
@@ -116,7 +116,6 @@ def get_connection():
 
 
 def get_temperature_c(connection=None):
-    print('get_temperature_c')
     need_to_close_connection = False
     if connection is None:
         connection = get_connection()
@@ -138,7 +137,9 @@ def store_temperature(temperature):
     
     # Create the table if it does not exist.
     if not __does_table_exist(connection, INDOOR_TEMPERATURE_TABLE_NAME):
-        cursor.execute(open('schema.sql', 'r').read())
+        schema_file = os.path.dirname(os.path.realpath(__file__)) + '/schema.sql'
+        print('creating database from {0}'.format(schema_file))
+        cursor.execute(open(schema_file, 'r').read())
         connection.commit()
     
     command = 'INSERT INTO {0} (TIME, TEMPERATURE) VALUES ({1}, {2})'.format(INDOOR_TEMPERATURE_TABLE_NAME, __get_current_unix_time(), __scale_temperature_for_database(temperature))
@@ -164,7 +165,7 @@ def dump_database():
 
 
 if __name__ == '__main__':
-#    store_current_temperature()
+    store_current_temperature()
 
     print(DATABASE_FILE_NAME)
 

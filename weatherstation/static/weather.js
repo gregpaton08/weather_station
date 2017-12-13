@@ -31,6 +31,18 @@ function convertTemperature(temperature) {
 }
 
 /**
+ * Format the temperature by converting it to the proper units and adding the degree symbol.
+ */
+function formatTemperature(temperature) {
+    if (temperature == null) {
+        return null;
+    }
+
+    formattedTemperature = Math.round(convertTemperature(temperature));
+    return formattedTemperature + '\xB0';
+}
+
+/**
  * Convert 24 hour to am/pm.
  */
 function formatTime(hour) {
@@ -49,10 +61,60 @@ function formatTime(hour) {
  * Update the current indoor and outdoor temperature.
  */
 function updateTemperature() {
-    $('#insidetemp').text(Math.round(convertTemperature(weatherGlobals.insideTemperatureC)));
-    $('#outsidetemp').text(Math.round(convertTemperature(weatherGlobals.outsideTemperatureC)));
+    $('#inside-temperature').text(formatTemperature(weatherGlobals.insideTemperatureC));
+    $('#outside-temperature').text(formatTemperature(weatherGlobals.outsideTemperatureC));
 }
 
+/**
+ *
+ */
+function updateWeatherCondition(condition) {
+    var conditionImage;
+    condition = condition.toLowerCase();
+    switch (condition) {
+        case 'clear':
+            conditionImage = 'sun.png';
+            break;
+        case 'rain':
+            conditionImage = 'rain.png';
+            break;
+        case 'overcast':
+            conditionImage = 'overcast.png';
+            break;
+    }
+
+    var imageDiv = document.getElementById('condition-image');
+    if (!conditionImage) {
+        imageDiv.innerHTML = condition;
+    } else {
+        var imgTag = '<img';
+        imgTag += ' src="static/images/' + conditionImage + '"';
+        imgTag += ' alt="' + condition + '"';
+        imgTag += ' title="' + condition + '"';
+        imgTag += '>';
+        imageDiv.innerHTML = imgTag;             
+    }
+}
+
+function triggerAnimations() {
+    var loadingImage = document.getElementById('loading-image');
+    loadingImage.style.visibility = 'hidden';
+    loadingImage.classList.add('loading-image-translate');
+
+    var houseImage = document.getElementById('house-image');
+    houseImage.classList.remove('house-image-translate');
+
+    var conditionImage = document.getElementById('condition-image');
+    conditionImage.classList.remove('condition-image-translate');
+
+    var curveChart = document.getElementById('curve-chart');
+    curveChart.classList.remove('curve-chart-translate');
+
+    var temperatureDisplays = document.getElementsByClassName('temperature-display-transition');
+    for (var i = 0; i < temperatureDisplays.length; ++i) {
+        temperatureDisplays[i].style.opacity = '1';
+    }
+}
 
 /**
  * Draw the temperature chart.
@@ -118,7 +180,7 @@ function drawChart() {
         hAxis: { showTextEvery: 3 }
     };
 
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    var chart = new google.visualization.LineChart(document.getElementById('curve-chart'));
 
     chart.draw(chartData, options);
 }
@@ -137,6 +199,10 @@ function updateData() {
     });
 
     $.when(
+        $.getJSON($SCRIPT_ROOT + 'weather', {}, function(data) {
+            updateWeatherCondition(data.weather);
+        }),
+
         $.getJSON($SCRIPT_ROOT + '/get_hourly_weather', {}, function(data) {
 
             weatherGlobals.currentTime = data.current_time;
@@ -164,17 +230,22 @@ function updateData() {
             });
         })
     ).then(function() {
+        // var houseImage = document.getElementById('house-image').getElementsByTagName('img')[0];
+        // // houseImage.style.animationIterationCount = "1";
+        // houseImage.classList.add('house-image-translate');
+        triggerAnimations();
+
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
     });
 }
 
-updateData();
+window.onload = function() {
+    updateData();
 
-/** Anonymous function to call the updateData function every 30 seconds. */
-$(function() {
-    setInterval(updateData, 30000);
-});
+    /* Call the updateData function periodically. */
+    setInterval(updateData, 300000);
+}
 
 /** Function tied to button to toggle between celsisu and fahrenheit. */
 $(function() {    

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather</title>
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='weather.js') }}"></script>
+    
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+    <div id="loading-image">
+        <img src="static/images/sun.png" title="loading..." alt="loading...">
+    </div>
+
+    <div class="center">
+        <div class="temperature-display-container">
+            <div id="inside-temp-display">
+                <div id="house-image" class="house-image-translate">
+                    <img src="static/images/house.png">
+                </div>
+                <div class="temperature-display temperature-display-transition">
+                    <span id="inside-temperature"></span>
+                </div>
+            </div>
+            <div id="outside-temperature-container">
+                <div id="condition-image" class="condition-image-translate">
+                </div>
+                <div class="temperature-display temperature-display-transition">
+                    <span id="outside-temperature"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="curve-chart" class="curve-chart-translate"></div>
+
+        <svg id="visualization" width="1000" height="500"></svg>
+
+        <div id="bar-chart">
+     
+        </div>
+
+        <script type="text/javascript">
+
+            var data = [{
+                            "sale": "202",
+                            "year": "2000"
+                        }, {
+                            "sale": "215",
+                            "year": "2001"
+                        }, {
+                            "sale": "179",
+                            "year": "2002"
+                        }, {
+                            "sale": "199",
+                            "year": "2003"
+                        }, {
+                            "sale": "134",
+                            "year": "2003"
+                        }, {
+                            "sale": "176",
+                            "year": "2010"
+                        }];
+             
+            var vis = d3.select('#visualization');
+            var width = 1000;
+            var height = 500;
+            var margins = {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 100
+            };
+
+            var xScale = d3.scale.linear().range([margins.left, width - margins.right]).domain([2000, 2010]);
+            var yScale = d3.scale.linear().range([height - margins.top, margins.bottom]).domain([134, 215]);
+            var xAxis = d3.svg.axis().scale(xScale);
+            var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+            vis.append("svg:g").attr("transform", "translate(0, " + (height - margins.bottom) + ")").call(xAxis);
+            vis.append("svg:g").attr("transform", "translate(" + (margins.left) + ", 0)").call(yAxis);
+
+            var lineGen = d3.svg.line()
+                .x(function(d) {
+                    return xScale(d.year);
+                })
+                .y(function(d) {
+                    return d.sale;
+                });
+
+            vis.append('svg:path')
+                .attr('d', lineGen(data))
+                .attr('stroke', 'green')
+                .attr('stroke-width', 2)
+                .attr('fill', 'none');
+        </script>
+
+    </div>
+
+</body>
+</html>
