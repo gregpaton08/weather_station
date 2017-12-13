@@ -93,10 +93,43 @@
 #outside-temperature-container {
     width: 400px;
     height: 250px;
+
+    position: relative;
 }
 
 #outside-temperature-container img {
     width: 250px;
+}
+
+#outside-temperature-container .temperature-display {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /*color: #fff;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#outside-temperature {
+    margin-right: 20px;   
+}
+
+#condition-image {
+/*    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    margin-left: 100%;*/
+}
+
+.condition-image-translate {
+    -webkit-transition: margin-left 2s;
+    transition: margin-left 2s;
 }
 
 #curve-chart {
@@ -109,25 +142,6 @@
 .curve-chart-transition {
     -webkit-transition: margin-top 2s;
     transition: margin-top 2s;
-}
-
-#outside-temperature {
-    margin-right: 20px;   
-}
-
-#condition-image {
-    position: absolute;
-    margin: 0px;
-    padding: 0px;
-    z-index: -1;
-    top: 0;
-    left: 50%;
-    margin-left: 100%;
-}
-
-.condition-image-translate {
-    -webkit-transition: margin-left 2s;
-    transition: margin-left 2s;
 }
 
 #loading-image {
