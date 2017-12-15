@@ -23,21 +23,15 @@ body {
     }
 }
 
-#loading-image {
+#loading-image-container {
     position: absolute;
     opacity: .47;
     left: 50%;
     top: 50%;
     margin-left: -256px;
     margin-top: -256px;
-
-    -webkit-transition-duration: 2s;
-    transition-duration: 2s;
-}
-
-.loading-image-translate {
-    transform: translateY(300%);
-    -webkit-transform: translateY(300%);
+    overflow: hidden;
+    height: 100%;
 }
 
 @-webkit-keyframes rotate {
@@ -54,6 +48,13 @@ body {
     -webkit-animation-duration: 4.0s; 
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
+}
+
+.loading-image-translate {
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+    transform: translateY(300%);
+    -webkit-transform: translateY(300%);
 }
 
 .temperature-display-container {

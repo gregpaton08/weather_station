@@ -98,7 +98,6 @@ function updateWeatherCondition(condition) {
 
 function triggerAnimations() {
     var loadingImage = document.getElementById('loading-image');
-    loadingImage.style.visibility = 'hidden';
     loadingImage.classList.add('loading-image-translate');
 
     var houseImage = document.getElementById('house-image');

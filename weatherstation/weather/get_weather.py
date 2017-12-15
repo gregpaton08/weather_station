@@ -24,9 +24,12 @@ def get_api_key():
     key = os.environ.get('WU_API_KEY', None)
     if key:
         return key
-    with open('api_key.txt') as file:
-        return file.read().strip()
-    return ''
+    try:
+        with open('api_key.txt') as file:
+            return file.read().strip()
+    except:
+        print('Failed to load Weather Underground API key')
+        return ''
 
 
 def __get_data_for_url_path(url_path):
@@ -76,7 +79,8 @@ def get_temperature_c():
 
     :returns: The current temperature in celsius.
     """
-    return __get_current_observation_for_key('temp_c')
+    temperature = __get_current_observation_for_key('temp_c')
+    return (temperature if temperature is not None else 50.0)
 
 
 def get_condition():
@@ -85,7 +89,8 @@ def get_condition():
 
     :returns: The current weather conditions.
     """
-    return __get_current_observation_for_key('weather')
+    condition = __get_current_observation_for_key('weather')
+    return (condition if condition is not None else 'FAIL')
 
 
 def get_hourly_forecast(num_hours=-1):
@@ -130,12 +135,12 @@ def get_hourly_history():
     url_path = '/history_' + (current_time - datetime.timedelta(days=1)).strftime('%Y%m%d') + '/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
     # Filter data down to date and temperature.
-    data = weather_data.get('history', []).get('observations', [])
+    data = weather_data.get('history', {}).get('observations', [])
 
     url_path = '/history_' + local_time.get_est_time().strftime('%Y%m%d') + '/q/' + API_URL_LOCATION
     weather_data = __get_data_for_url_path(url_path)
     # Filter data down to date and temperature.
-    data += weather_data.get('history', []).get('observations', [])
+    data += weather_data.get('history', {}).get('observations', [])
 
     # TODO: convert year, month, day, hour, minute into UTC time code
     data = [ {
