@@ -3,6 +3,7 @@
 ## Open
 ### Front-end
 * add support for celsius and fahrenheit
+    * Graph plot shouldn't move when switching between C and F
 * chart
     * update chart style to match rest of design (chart.js?)
     * Make graph interactive (zoom, scroll) like Google finance
@@ -11,7 +12,7 @@
 * Display weather warnings/forecast
     * need to decide how to display this
 * Mobile site?
-* Graph plot shouldn't move when switching between C and F
+    * Temperature display vertical (top/bottom) instead of horizontal (side-by-side)
 * Add option to set location
 * Split app into client/server in separate repos? microservice to integrate with all home automation?
 * Consider updating site colors
