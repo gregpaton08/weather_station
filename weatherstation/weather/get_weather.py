@@ -89,7 +89,8 @@ def get_condition():
 
     :returns: The current weather conditions.
     """
-    return __get_current_observation_for_key('weather')
+    condition = __get_current_observation_for_key('weather')
+    return (condition if condition is not None else 'FAIL')
 
 
 def get_hourly_forecast(num_hours=-1):
