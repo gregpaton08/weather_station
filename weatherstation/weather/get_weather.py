@@ -80,7 +80,7 @@ def get_temperature_c():
     :returns: The current temperature in celsius.
     """
     temperature = __get_current_observation_for_key('temp_c')
-    return (temperature if temperature is not None else 0.0)
+    return (temperature if temperature is not None else 50.0)
 
 
 def get_condition():
