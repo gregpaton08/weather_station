@@ -32,16 +32,6 @@ body {
     margin-top: -256px;
     overflow: hidden;
     height: 100%;
-
-    -webkit-transition-duration: 2s;
-    transition-duration: 2s;
-}
-
-.loading-image-translate {
-    -webkit-transition-duration: 2s;
-    transition-duration: 2s;
-    transform: translateY(300%);
-    -webkit-transform: translateY(300%);
 }
 
 @-webkit-keyframes rotate {
@@ -58,6 +48,13 @@ body {
     -webkit-animation-duration: 4.0s; 
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
+}
+
+.loading-image-translate {
+    -webkit-transition-duration: 2s;
+    transition-duration: 2s;
+    transform: translateY(300%);
+    -webkit-transform: translateY(300%);
 }
 
 .temperature-display-container {
