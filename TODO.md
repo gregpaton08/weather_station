@@ -28,6 +28,10 @@
 * Design single API call to get historic indoor and forecast outdoor temperature
 * Unit tests!!!!!
 
+### Stretch Goals
+* build and integrate with "smart" thermostat
+    * integrate Google calendar to turn down heat when away
+
 ## Complete
 * Display weather conditions as text
 * Store historical indoor temperature in database
