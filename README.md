@@ -6,7 +6,7 @@
 
 ### Run locally
 ```
-flask/bin/gunicorn run:app
+venv/bin/gunicorn weatherstation:app
 ```
 
 ## Create Heroku remote
