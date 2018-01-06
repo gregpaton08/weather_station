@@ -79,6 +79,7 @@ function updateWeatherCondition(condition) {
             conditionImage = 'rain.png';
             break;
         case 'overcast':
+        case 'partly cloudy':
             conditionImage = 'overcast.png';
             break;
     }
