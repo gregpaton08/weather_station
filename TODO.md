@@ -5,7 +5,7 @@
 * add support for celsius and fahrenheit
     * Graph plot shouldn't move when switching between C and F
 * chart
-    * update chart style to match rest of design (chart.js?)
+    * update chart style to match rest of design (chart.js? or D3?)
     * Make graph interactive (zoom, scroll) like Google finance
 * Design outdoor weather icons (sun, clouds, rain, wind, etc.)
 * Display weather icons
