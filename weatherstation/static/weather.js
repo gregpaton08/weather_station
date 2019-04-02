@@ -87,7 +87,7 @@ function updateWeatherCondition(condition) {
     var imageDiv = document.getElementById('condition-image');
     if (!conditionImage) {
         imageDiv.innerHTML = condition;
-        print('No image for {0}\n'.format(condition))
+        console.error(`No image for ${condition}\n`)
     } else {
         var imgTag = '<img';
         imgTag += ' src="static/images/' + conditionImage + '"';
