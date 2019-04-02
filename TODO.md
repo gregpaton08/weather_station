@@ -20,6 +20,7 @@
 <img src="notes/invert.png" width="600">
 
 ### Back-end
+* Update weather API now that Weather Underground is no longer free. Perhaps [this?](http://apidev.accuweather.com/developers/)
 * Store historical indoor/outdoor data in persistant database (Heroku?)
 * Unix time instead of full date in API JSON data?
 * debug performance bottleneck. Data is cached, requests shouldn't take so long.
