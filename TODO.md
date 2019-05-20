@@ -20,6 +20,8 @@
 
 <img src="notes/invert.png" width="600">
 
+* Pull data from Nest thermostat and compare to one wire reading, graph alongside
+
 ### Back-end
 * **CRITICAL** Update weather API now that Weather Underground is no longer free. Perhaps [this?](http://apidev.accuweather.com/developers/)
 * Store historical indoor/outdoor data in persistant database (Heroku?)
